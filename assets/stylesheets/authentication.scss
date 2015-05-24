@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url('../fonts/Roboto-Regular.ttf');
+}
+
+$font-stack: Lato, sans-serif;
+
+body {
+  font-family: $font-stack;
+  margin: 50px;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#authorize-div {
+  margin: auto;
+  width: 300px;
+  text-align: center;
+}
+
+/* Google Sign-In Button */
+#signin {
+  cursor: hand;
+  display: inline-block;
+  background: #4285F4;
+  color: white;
+  width: 190px;
+  border-radius: 5px;
+  white-space: nowrap;
+
+  span.label {
+    font-weight: bold;
+  }
+
+  span.icon {
+    background: url('../images/g-normal.png') transparent 5px 50% no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    width: 42px;
+    height: 42px;
+    border-right: #2265D4 1px solid;
+  }
+
+  span.buttonText {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 42px;
+    padding-right: 42px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+  }
+}

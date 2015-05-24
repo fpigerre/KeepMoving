@@ -28,3 +28,9 @@ local.properties
 ### Cordova ###
 
 cordova/
+
+### Styling ###
+
+assets/stylesheets/authentication.css
+assets/stylesheets/stylesheet.css
+assets/stylesheets/*.map

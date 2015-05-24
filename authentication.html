@@ -1,0 +1,21 @@
+<html>
+<head>
+    <link rel="stylesheet" href="assets/stylesheets/authentication.css">
+    <script src="assets/javascript/jquery-2-1-4.min.js"></script>
+    <script src="assets/javascript/authentication.js"></script>
+    <script src="assets/javascript/google-client.js?onload=checkAuth"></script>
+</head>
+<body>
+<img class="logo" src="assets/images/logo.png" height="211" width="216">
+<div id="authorize-div" style="display: none">
+    <p>Sign in to access your calendar</p>
+
+    <!--Button for the user to click to initiate auth sequence -->
+    <div id="signin" onclick="handleAuthClick(event)">
+        <span class="icon"></span>
+        <span class="buttonText">Google</span>
+    </div>
+</div>
+<pre id="output"></pre>
+</body>
+</html>

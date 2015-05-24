@@ -3,12 +3,12 @@
   "name": "KeepMoving",
   "version": "1",
   "icons": {
-    "128": "icon_128.png"
+    "128": "assets/images/icon_128.png"
   },
-  "permissions": [],
+  "permissions": ["http://apis.google.com/"],
   "app": {
     "background": {
-      "scripts": ["background.js"]
+      "scripts": ["assets/javascript/background.js"]
     }
   },
   "minimum_chrome_version": "28"
