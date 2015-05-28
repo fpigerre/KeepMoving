@@ -1,6 +1,6 @@
 // Your Client ID can be retrieved from your project in the Google
 // Developer Console, https://console.developers.google.com
-var CLIENT_ID = '181541807019-nhjd1lbck6osq7qnt3meoj7mstr8jstr.apps.googleusercontent.com';
+var CLIENT_ID = '181541807019-h0bjdh6ba22aikikdjppuskt8p3q71b1.apps.googleusercontent.com';
 
 // This quickstart only requires read-only scope, check
 // https://developers.google.com/google-apps/calendar/auth if you want to

@@ -10,6 +10,6 @@ Keep Moving is a calendar application that aims to keep you moving in a differen
 - [ ] Design for mobile
 - [ ] Create a chrome application that will allow desktop, offline use
 
-## Interface
+## Interface Prototype
 
-// Screenshots here
+![Preliminary Interface Screenshot](http://i.imgur.com/oskQHiG.jpg)

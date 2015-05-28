@@ -11,5 +11,8 @@
       "scripts": ["assets/javascript/background.js"]
     }
   },
+  "sandbox": {
+    "pages": ["authentication.html"]
+  },
   "minimum_chrome_version": "28"
 }
