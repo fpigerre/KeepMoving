@@ -1,15 +1,18 @@
+// https://developers.google.com/google-apps/calendar/auth if you want to
+// request write scope.
+
 var CLIENT_ID;
 var SCOPES;
+
+$.getJSON("information.json", function (data) {
+    CLIENT_ID = data.CLIENT_ID;
+    SCOPES = data.SCOPE;
+});
 
 /**
  * Check if current user has authorized this application.
  */
 function checkAuth() {
-    $.getJSON("information.json", function (data) {
-        CLIENT_ID = data.CLIENT_ID;
-        SCOPES = data.SCOPE;
-    });
-
     gapi.auth.authorize(
         {
             'client_id': CLIENT_ID,
@@ -25,14 +28,23 @@ function checkAuth() {
  */
 function handleAuthResult(authResult) {
     if (authResult && !authResult.error) {
-        gapi.client.load('calendar', 'v3', loadCalendarData("day"));
+        loadCalendarApi();
     } else {
-        window.location.replace("/authentication.html");
+        window.location.replace("authentication.html");
     }
 }
 
+/**
+ * Load Google Calendar client library. List upcoming events
+ * once client library is loaded.
+ */
+function loadCalendarApi() {
+    gapi.client.load('calendar', 'v3', loadCalendarData);
+}
+
 // TODO: Integrate other windows
-function loadCalendarData(window) {
+function loadCalendarData() {
+    var window = "month";
     var today = new Date(Date.now());
     var minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
     var maxDate;
@@ -52,31 +64,29 @@ function loadCalendarData(window) {
         'timeMax': maxDate.toISOString(),
         'showDeleted': false,
         'singleEvents': true,
-        'maxResults': 100,
+        'maxResults': 10,
         'orderBy': 'startTime'
     });
 
     request.execute(function (resp) {
-        console.log(resp);
         var events = resp.items;
-        console.log(events);
 
         if (events.length > 0) {
-            var container = document.getElementsByClassName('.upcoming');
-            for (i = 0; i < container.length; i++) {
+            var container = document.getElementsByClassName('upcoming');
+
+            for (var i = 0; i < container.length; i++) {
                 var event = events[i];
-
-                container[i].innerHTML = '<h3>' + event.start.dateTime + '</h3><p>' + event.summary + '</p>';
-                console.log('<h3>' + event.start.dateTime + '</h3><p>' + event.summary + '</p>');
-
                 var when = event.start.dateTime;
                 if (!when) {
-                    when = event.start.date;
+                    when = event.start.date.substring(6);
+                } else {
+                    when = when.substring(11, 16);
                 }
-                //appendPre(event.summary + ' (' + when + ')')
+
+                container[i].innerHTML = '<h3>' + when + '</h3><p>' + event.summary + '</p>';
             }
         } else {
-            //appendPre('No upcoming events found.');
+            // TODO: Handle lack of events
         }
     });
 }
