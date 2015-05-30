@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   src: url('../fonts/Roboto-Regular.ttf');
 }
 
@@ -14,10 +14,14 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+
+  // Perspective ratio must be retained
+  height: 211px;
+  width: 216px;
 }
 
 #authorize-div {
-  margin: auto;
+  margin: 10% auto;
   width: 300px;
   text-align: center;
 }
@@ -52,6 +56,6 @@ body {
     padding-right: 42px;
     font-size: 14px;
     font-weight: bold;
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, sans-serif;
   }
 }

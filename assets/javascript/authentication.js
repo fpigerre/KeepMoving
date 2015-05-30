@@ -1,11 +1,13 @@
-// Your Client ID can be retrieved from your project in the Google
-// Developer Console, https://console.developers.google.com
-var CLIENT_ID = '181541807019-h0bjdh6ba22aikikdjppuskt8p3q71b1.apps.googleusercontent.com';
-
-// This quickstart only requires read-only scope, check
 // https://developers.google.com/google-apps/calendar/auth if you want to
 // request write scope.
-var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
+
+var CLIENT_ID;
+var SCOPES;
+
+$.getJSON("information.json", function (data) {
+    CLIENT_ID = data.CLIENT_ID;
+    SCOPES = data.SCOPE;
+});
 
 /**
  * Check if current user has authorized this application.
