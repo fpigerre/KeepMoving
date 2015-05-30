@@ -6,7 +6,7 @@ var SCOPES;
 
 $.getJSON("information.json", function (data) {
     CLIENT_ID = data.CLIENT_ID;
-    SCOPES = data.SCOPE;
+    SCOPES = data.SCOPES;
 });
 
 /**

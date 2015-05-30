@@ -6,7 +6,7 @@ var SCOPES;
 
 $.getJSON("information.json", function (data) {
     CLIENT_ID = data.CLIENT_ID;
-    SCOPES = data.SCOPE;
+    SCOPES = data.SCOPES;
 });
 
 /**
@@ -28,7 +28,7 @@ function checkAuth() {
  */
 function handleAuthResult(authResult) {
     if (authResult && !authResult.error) {
-        loadCalendarApi();
+        loadApi();
     } else {
         window.location.replace("authentication.html");
     }
@@ -38,8 +38,9 @@ function handleAuthResult(authResult) {
  * Load Google Calendar client library. List upcoming events
  * once client library is loaded.
  */
-function loadCalendarApi() {
+function loadApi() {
     gapi.client.load('calendar', 'v3', loadCalendarData);
+    gapi.client.load('plus', 'v1', initializeProfileData);
 }
 
 // TODO: Integrate other windows
@@ -58,7 +59,7 @@ function loadCalendarData() {
             break;
     }
 
-    var request = gapi.client.calendar.events.list({
+    var calRequest = gapi.client.calendar.events.list({
         'calendarId': 'primary',
         'timeMin': minDate.toISOString(),
         'timeMax': maxDate.toISOString(),
@@ -68,8 +69,8 @@ function loadCalendarData() {
         'orderBy': 'startTime'
     });
 
-    request.execute(function (resp) {
-        var events = resp.items;
+    calRequest.execute(function (response) {
+        var events = response.items;
 
         if (events.length > 0) {
             var container = document.getElementsByClassName('upcoming');
@@ -98,6 +99,14 @@ function loadCalendarData() {
     });
 }
 
+function initializeProfileData() {
+    var profileRequest = gapi.client.plus.people.get({'userId': 'me'});
+
+    profileRequest.execute(function (response) {
+        updateName(response.displayName);
+    });
+}
+
 function appendSuffix(i) {
     i = parseInt(i, 10);
 
@@ -121,4 +130,13 @@ function getMonthString(i) {
     ];
     i = parseInt(i, 10);
     return monthNames[i];
+}
+
+function updateName(fullName) {
+    var greetings = ["Hi", "Hello", "Hey", "Howdy"];
+    var firstName = fullName.split(' ')[0];
+    document.getElementById('name').innerHTML = greetings[Math.floor(Math.random() * greetings.length)]
+        + " "
+        + firstName
+        + "!";
 }

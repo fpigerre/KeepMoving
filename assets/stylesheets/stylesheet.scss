@@ -8,6 +8,7 @@ $font-stack: Infinity, Lato, sans-serif;
 
 body {
   font-family: $font-stack;
+  height: 100%;
   margin: 0;
   overflow: hidden;
 }
@@ -53,5 +54,18 @@ $colors: (#01E164, #0079CA, #00B7A5, #FF6A00, #E7016D, #FFDB00);
       font-size: 36px;
       padding-top: 10%;
     }
+  }
+}
+
+.top {
+  width: 100%;
+
+  h1 {
+    font-size: 50px;
+    margin: 0;
+  }
+
+  small {
+    font-size: 34px;
   }
 }
