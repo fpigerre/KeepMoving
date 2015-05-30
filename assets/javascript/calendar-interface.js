@@ -77,16 +77,48 @@ function loadCalendarData() {
             for (var i = 0; i < container.length; i++) {
                 var event = events[i];
                 var when = event.start.dateTime;
-                if (!when) {
-                    when = event.start.date.substring(6);
-                } else {
-                    when = when.substring(11, 16);
-                }
 
+                if (!when) {
+                    // Use the event's date
+                    var eventDate = event.start.date.substring(6).split('-');
+                    when = appendSuffix(eventDate[1]) + " of " + getMonthString(eventDate[0]);
+                } else if (event.start.dateTime.substring(8, 10) != today.getDate()) {
+                    // Use the event's date
+                    var date = event.start.dateTime.substring(5, 10).split('-');
+                    when = appendSuffix(date[1]) + " of " + getMonthString(date[0]);
+                } else {
+                    // Use the event's time
+                    when = event.start.dateTime.substring(12, 16);
+                }
                 container[i].innerHTML = '<h3>' + when + '</h3><p>' + event.summary + '</p>';
             }
         } else {
             // TODO: Handle lack of events
         }
     });
+}
+
+function appendSuffix(i) {
+    i = parseInt(i, 10);
+
+    var j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+        return i + "st";
+    }
+    if (j == 2 && k != 12) {
+        return i + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return i + "rd";
+    }
+    return i + "th";
+}
+
+function getMonthString(i) {
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    i = parseInt(i, 10);
+    return monthNames[i];
 }
