@@ -58,7 +58,8 @@ $colors: (#01E164, #0079CA, #00B7A5, #FF6A00, #E7016D, #FFDB00);
 }
 
 .top {
-  width: 100%;
+  display: inline-block;
+  width: 79%;
 
   h1 {
     font-size: 50px;
@@ -67,5 +68,14 @@ $colors: (#01E164, #0079CA, #00B7A5, #FF6A00, #E7016D, #FFDB00);
 
   small {
     font-size: 34px;
+  }
+
+  .left, .right {
+    display: inline-block;
+    padding: 30px;
+  }
+
+  .right {
+    float: right;
   }
 }

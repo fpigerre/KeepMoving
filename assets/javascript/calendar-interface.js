@@ -1,9 +1,9 @@
-// https://developers.google.com/google-apps/calendar/auth if you want to
-// request write scope.
-
 var CLIENT_ID;
 var SCOPES;
 
+/**
+ * Gets Google API Client ID and Scope data from a JSON file.
+ */
 $.getJSON("information.json", function (data) {
     CLIENT_ID = data.CLIENT_ID;
     SCOPES = data.SCOPES;
@@ -43,6 +43,10 @@ function loadApi() {
     gapi.client.load('plus', 'v1', initializeProfileData);
 }
 
+/**
+ * Get Calendar data from the Google API, sanitize
+ * and display it.
+ */
 // TODO: Integrate other windows
 function loadCalendarData() {
     var window = "month";
@@ -77,6 +81,7 @@ function loadCalendarData() {
 
             for (var i = 0; i < container.length; i++) {
                 var event = events[i];
+                console.log(event);
                 var when = event.start.dateTime;
 
                 if (!when) {
@@ -91,7 +96,18 @@ function loadCalendarData() {
                     // Use the event's time
                     when = event.start.dateTime.substring(12, 16);
                 }
-                container[i].innerHTML = '<h3>' + when + '</h3><p>' + event.summary + '</p>';
+
+                if (event.description && event.description.includes(":icon:")) {
+                    var icon = event.description.split(":icon:").pop();
+                }
+
+                // Append event data to a container object
+                if (icon) {
+                    container[i].innerHTML = '<h3>' + when + '</h3><i class=\"' + icon + '\"></i><p>' + event.summary + '</p>';
+                    icon = null;
+                } else {
+                    container[i].innerHTML = '<h3>' + when + '</h3><p>' + event.summary + '</p>';
+                }
             }
         } else {
             // TODO: Handle lack of events
@@ -99,14 +115,23 @@ function loadCalendarData() {
     });
 }
 
+/**
+ * Hook into the Google+ API and update the displayed name
+ */
 function initializeProfileData() {
     var profileRequest = gapi.client.plus.people.get({'userId': 'me'});
-
     profileRequest.execute(function (response) {
         updateName(response.displayName);
     });
 }
 
+/**
+ * Appends a suffix to a number, for example, the number 3
+ * returns "3rd".
+ *
+ * @param i A number
+ * @returns {string} The number with a suffix attached
+ */
 function appendSuffix(i) {
     i = parseInt(i, 10);
 
@@ -124,6 +149,12 @@ function appendSuffix(i) {
     return i + "th";
 }
 
+/**
+ * Gets a month name from an integer
+ *
+ * @param i An integer between 1 and 12
+ * @returns {string} The name of a month, formatted as a string
+ */
 function getMonthString(i) {
     var monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
@@ -132,6 +163,12 @@ function getMonthString(i) {
     return monthNames[i];
 }
 
+/**
+ * Update the main page with a friendly greeting featuring the
+ * user's first name.
+ *
+ * @param fullName {string} The user's full name
+ */
 function updateName(fullName) {
     var greetings = ["Hi", "Hello", "Hey", "Howdy"];
     var firstName = fullName.split(' ')[0];
@@ -140,3 +177,10 @@ function updateName(fullName) {
         + firstName
         + "!";
 }
+
+var date;
+setInterval(function () {
+    date = new Date(Date.now());
+    document.getElementById("time").innerHTML = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+    date = null;
+}, 900);

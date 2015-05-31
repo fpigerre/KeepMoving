@@ -1,9 +1,9 @@
-// https://developers.google.com/google-apps/calendar/auth if you want to
-// request write scope.
-
 var CLIENT_ID;
 var SCOPES;
 
+/**
+ * Gets Google API Client ID and Scope data from a JSON file.
+ */
 $.getJSON("information.json", function (data) {
     CLIENT_ID = data.CLIENT_ID;
     SCOPES = data.SCOPES;
