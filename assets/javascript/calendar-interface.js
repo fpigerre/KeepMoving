@@ -28,7 +28,7 @@ function checkAuth() {
  */
 function handleAuthResult(authResult) {
     if (authResult && !authResult.error) {
-        loadApi();
+        loadElements();
     } else {
         window.location.replace("authentication.html");
     }
@@ -36,11 +36,13 @@ function handleAuthResult(authResult) {
 
 /**
  * Load Google Calendar client library. List upcoming events
- * once client library is loaded.
+ * once client library is loaded. Load and initialize other
+ * elements for display
  */
-function loadApi() {
+function loadElements() {
     gapi.client.load('calendar', 'v3', loadCalendarData);
     gapi.client.load('plus', 'v1', initializeProfileData);
+    launchClock();
 }
 
 /**
@@ -81,7 +83,6 @@ function loadCalendarData() {
 
             for (var i = 0; i < container.length; i++) {
                 var event = events[i];
-                console.log(event);
                 var when = event.start.dateTime;
 
                 if (!when) {
@@ -178,9 +179,14 @@ function updateName(fullName) {
         + "!";
 }
 
-var date;
-setInterval(function () {
-    date = new Date(Date.now());
-    document.getElementById("time").innerHTML = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
-    date = null;
-}, 900);
+/**
+ * Launch a real-time clock
+ */
+function launchClock() {
+    var date;
+    setInterval(function () {
+        date = new Date(Date.now());
+        document.getElementById("time").innerHTML = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+        date = null;
+    }, 900);
+}
