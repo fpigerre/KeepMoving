@@ -151,7 +151,7 @@ function appendSuffix(i) {
 }
 
 /**
- * Gets a month name from an integer
+ * Gets the name of a month from an integer
  *
  * @param i An integer between 1 and 12
  * @returns {string} The name of a month, formatted as a string
@@ -165,6 +165,18 @@ function getMonthString(i) {
 }
 
 /**
+ * Gets the name of a day from an integer
+ *
+ * @param i An integer between 1 and 7
+ * @returns {string} The name of a day, formatted as a string
+ */
+function getDayString(i) {
+    var dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    i = parseInt(i, 10);
+    return dayNames[i];
+}
+
+/**
  * Update the main page with a friendly greeting featuring the
  * user's first name.
  *
@@ -173,7 +185,8 @@ function getMonthString(i) {
 function updateName(fullName) {
     var greetings = ["Hi", "Hello", "Hey", "Howdy"];
     var firstName = fullName.split(' ')[0];
-    document.getElementById('name').innerHTML = greetings[Math.floor(Math.random() * greetings.length)]
+    document.getElementById('name').innerHTML
+        = greetings[Math.floor(Math.random() * greetings.length)]
         + " "
         + firstName
         + "!";
@@ -183,10 +196,19 @@ function updateName(fullName) {
  * Launch a real-time clock
  */
 function launchClock() {
-    var date;
+    var time;
+    var date = new Date(Date.now());
+
+    document.getElementById("date").innerHTML
+        = getDayString(date.getDay())
+        + ' '
+        + appendSuffix(date.getDate())
+        + ' of '
+        + getMonthString(date.getMonth());
+
     setInterval(function () {
-        date = new Date(Date.now());
-        document.getElementById("time").innerHTML = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
-        date = null;
+        time = new Date(Date.now());
+        document.getElementById("time").innerHTML = time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
+        time = null;
     }, 900);
 }

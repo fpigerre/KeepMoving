@@ -77,5 +77,10 @@ $colors: (#01E164, #0079CA, #00B7A5, #FF6A00, #E7016D, #FFDB00);
 
   .right {
     float: right;
+    text-align: center;
+
+    #date {
+      font-size: 28px;
+    }
   }
 }
