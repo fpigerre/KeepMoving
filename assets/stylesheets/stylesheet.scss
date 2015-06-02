@@ -4,6 +4,7 @@
 }
 
 $font-stack: Fira, Lato, sans-serif;
+$colors: (#01E164, #0079CA, #00B7A5, #FF6A00, #E7016D, #FFDB00);
 
 body {
   font-family: $font-stack;
@@ -17,7 +18,6 @@ h1, h3 {
   font-weight: 300;
 }
 
-$colors: (#01E164, #0079CA, #00B7A5, #FF6A00, #E7016D, #FFDB00);
 .sidebar {
   background-color: #DDDDDD;
   color: white;
@@ -86,5 +86,22 @@ $colors: (#01E164, #0079CA, #00B7A5, #FF6A00, #E7016D, #FFDB00);
     #date {
       font-size: 28px;
     }
+  }
+}
+
+#metro {
+  display: inline-block;
+  width: 79%;
+  padding-left: 20px;
+
+  @for $i from 1 through length($colors) {
+    .metro-box:nth-of-type(#{$i}) {
+      background: nth($colors, $i);
+    }
+  }
+
+  .metro-box {
+    height: 100px;
+    width: 100px;
   }
 }
