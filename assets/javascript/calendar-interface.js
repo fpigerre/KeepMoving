@@ -51,6 +51,7 @@ function loadElements() {
  */
 // TODO: Integrate other windows
 function loadCalendarData() {
+    // Set parameters for data collection
     var window = "month";
     var today = new Date(Date.now());
     var minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
@@ -80,43 +81,60 @@ function loadCalendarData() {
 
         if (events.length > 0) {
             var container = document.getElementsByClassName('upcoming');
-            var node = '';
+            var metroNode = '';
 
             for (var i = 0; i < container.length; i++) {
                 var event = events[i];
                 var when = event.start.dateTime;
-                node = node + '<div class=\"metro-box\">';
-                console.log(node);
+                var shortWhen;
+                var summary = event.summary;
+                metroNode = metroNode + '<div class=\"metro-box\">';
 
                 if (!when) {
                     // Use the event's date
                     var eventDate = event.start.date.substring(6).split('-');
                     when = appendSuffix(eventDate[1]) + " of " + getMonthString(eventDate[0]);
+                    shortWhen = appendSuffix(eventDate[1]);
                 } else if (event.start.dateTime.substring(8, 10) != today.getDate()) {
                     // Use the event's date
                     var date = event.start.dateTime.substring(5, 10).split('-');
                     when = appendSuffix(date[1]) + " of " + getMonthString(date[0]);
+                    shortWhen = appendSuffix(date[1]);
                 } else {
                     // Use the event's time
                     when = event.start.dateTime.substring(12, 16);
+                    shortWhen = when;
                 }
 
+                // Check event description for icons and prepare to display them
                 if (event.description && event.description.includes(":icon:")) {
-                    var icon = '<i class=\"' +  event.description.split(":icon:").pop() + '\"></i>'
+                    var icon = '<i class=\"' + event.description.split(":icon:").pop() + '\"></i>'
                 }
 
-                // Append event data to a container object
+                // Split long summaries into several lines
+                if (summary.length > 11) {
+                    summary = '';
+                    var array = event.summary.split(' ');
+                    for (var j = 0; j < array.length; j++) {
+                        if (j == array.length - 1) summary = summary + array[j];
+                        else summary = summary + array[j] + '<br>';
+                    }
+                }
+
+                // Append event data to sidebar and metro container objects
                 if (icon) {
-                    container[i].innerHTML = '<h3>' + when + '</h3>' + icon + '<p>' + event.summary + '</p>';
-                    node = node + icon;
+                    container[i].innerHTML = '<h3>' + when + '</h3>' + icon + '<p>' + summary + '</p>';
+                    metroNode = metroNode + icon;
                     icon = null;
                 } else {
-                    container[i].innerHTML = '<h3>' + when + '</h3><p>' + event.summary + '</p>';
+                    container[i].innerHTML = '<h3>' + when + '</h3><p>' + summary + '</p>';
+                    metroNode = metroNode + '<h1>' + shortWhen +'</h1>';
                 }
 
-                node = node + '</div>';
+                metroNode = metroNode + '</div>';
             }
-            document.getElementById("metro").innerHTML = node;
+            // Display Metro Box icon/time
+            document.getElementById("metro").innerHTML = metroNode;
         } else {
             // TODO: Handle lack of events
         }
