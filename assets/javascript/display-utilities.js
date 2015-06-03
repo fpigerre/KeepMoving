@@ -64,7 +64,7 @@ function updateName(fullName) {
 
     var firstName = fullName.split(' ')[0];
     document.getElementById('name').innerHTML
-        = greetings[Math.floor(Math.random() * greetings.length + 1)]
+        = greetings[Math.floor(Math.random() * greetings.length)]
         + " "
         + firstName
         + "!";
