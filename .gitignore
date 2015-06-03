@@ -32,5 +32,7 @@ cordova/
 ### Styling ###
 
 assets/stylesheets/authentication.css
+assets/stylesheets/_sidebar.css
 assets/stylesheets/stylesheet.css
+assets/stylesheets/display.css
 assets/stylesheets/*.map

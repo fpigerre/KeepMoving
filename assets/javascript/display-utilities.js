@@ -90,19 +90,3 @@ function launchClock() {
         time = null;
     }, 900);
 }
-
-/**
- * This allows the use of .remove(); for DOM elements.
- * More information can be found at:
- * http://stackoverflow.com/questions/3387427/remove-element-by-id
- */
-Element.prototype.remove = function() {
-    this.parentElement.removeChild(this);
-};
-NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-    for(var i = 0, len = this.length; i < len; i++) {
-        if(this[i] && this[i].parentElement) {
-            this[i].parentElement.removeChild(this[i]);
-        }
-    }
-};
