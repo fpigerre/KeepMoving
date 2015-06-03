@@ -94,9 +94,10 @@ h1, h3 {
 
 #metro {
   color: white;
-  display: inline-block;
+  display: table;
   float: right;
   margin-top: 20px;
+  overflow-x: scroll;
   width: 75%;
 
   @for $i from 1 through length($colors) {
@@ -110,5 +111,9 @@ h1, h3 {
     margin: 15px;
     text-align: center;
     width: 100px;
+
+    * {
+      padding-top: 30%;
+    }
   }
 }

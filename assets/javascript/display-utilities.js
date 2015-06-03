@@ -55,10 +55,16 @@ function getDayString(i) {
  * @param fullName {string} The user's full name
  */
 function updateName(fullName) {
-    var greetings = ["Hi", "Hello", "Hey", "Howdy"];
+    var greetings = ["Hi", "Hello", "Hey", "Howdy", "G'day"];
+
+    var date = new Date(Date.now());
+    if (date.getHours() > 6 && date.getHours() < 12) greetings.push("Good morning");
+    if (date.getHours() > 12 && date.getHours() < 18) greetings.push("Good afternoon");
+    if (date.getHours() > 18 && date.getHours() < 21) greetings.push("Good evening");
+
     var firstName = fullName.split(' ')[0];
     document.getElementById('name').innerHTML
-        = greetings[Math.floor(Math.random() * greetings.length)]
+        = greetings[Math.floor(Math.random() * greetings.length + 1)]
         + " "
         + firstName
         + "!";
