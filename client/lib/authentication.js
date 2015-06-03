@@ -4,7 +4,7 @@ var SCOPES;
 /**
  * Gets Google API Client ID and Scope data from a JSON file.
  */
-$.getJSON("information.json", function (data) {
+jQuery.getJSON("information.json", function (data) {
     CLIENT_ID = data.CLIENT_ID;
     SCOPES = data.SCOPES;
 });
