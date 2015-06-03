@@ -128,7 +128,7 @@ function loadCalendarData() {
                     icon = null;
                 } else {
                     container[i].innerHTML = '<h3>' + when + '</h3><p>' + summary + '</p>';
-                    metroNode = metroNode + '<h1>' + shortWhen +'</h1>';
+                    metroNode = metroNode + '<h1>' + shortWhen + '</h1>';
                 }
 
                 metroNode = metroNode + '</div>';
