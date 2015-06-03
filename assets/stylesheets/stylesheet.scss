@@ -107,6 +107,7 @@ h1, h3 {
   }
 
   .metro-box {
+    cursor: pointer;
     height: 100px;
     margin: 15px;
     text-align: center;
@@ -115,5 +116,9 @@ h1, h3 {
     * {
       padding-top: 30%;
     }
+  }
+
+  .metro-box:hover {
+    box-shadow: 3px 4px 3px #DDDDDD;
   }
 }

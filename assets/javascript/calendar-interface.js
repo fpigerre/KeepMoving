@@ -4,7 +4,7 @@ var SCOPES;
 /**
  * Gets Google API Client ID and Scope data from a JSON file.
  */
-$.getJSON("information.json", function (data) {
+$.getJSON('information.json', function (data) {
     CLIENT_ID = data.CLIENT_ID;
     SCOPES = data.SCOPES;
 });
@@ -30,7 +30,7 @@ function handleAuthResult(authResult) {
     if (authResult && !authResult.error) {
         loadElements();
     } else {
-        window.location.replace("authentication.html");
+        window.location.replace('authentication.html');
     }
 }
 
@@ -52,16 +52,16 @@ function loadElements() {
 // TODO: Integrate other windows
 function loadCalendarData() {
     // Set parameters for data collection
-    var window = "month";
+    var window = 'month';
     var today = new Date(Date.now());
     var minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
     var maxDate;
     switch (window) {
-        case "day":
+        case 'day':
             maxDate = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate() + 1);
             break;
 
-        case "month":
+        case 'month':
             maxDate = new Date(minDate.getFullYear(), minDate.getMonth() + 1, minDate.getDate() + 1);
             break;
     }
@@ -107,8 +107,8 @@ function loadCalendarData() {
                 }
 
                 // Check event description for icons and prepare to display them
-                if (event.description && event.description.includes(":icon:")) {
-                    var icon = '<i class=\"' + event.description.split(":icon:").pop() + '\"></i>'
+                if (event.description && event.description.includes(':icon:')) {
+                    var icon = '<i class=\"' + event.description.split(':icon:').pop() + '\"></i>'
                 }
 
                 // Split long summaries into several lines
@@ -134,7 +134,7 @@ function loadCalendarData() {
                 metroNode = metroNode + '</div>';
             }
             // Display Metro Box icon/time
-            document.getElementById("metro").innerHTML = metroNode;
+            document.getElementById('metro').innerHTML = metroNode;
         } else {
             // TODO: Handle lack of events
         }
