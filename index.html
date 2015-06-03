@@ -3,14 +3,14 @@
     <title>Keep Moving</title>
 
     <!-- Styling -->
-    <link rel="stylesheet" type="text/css" href="assets/stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/index.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
 
     <!-- JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="assets/javascript/display-utilities.js"></script>
-    <script type="text/javascript" src="assets/javascript/calendar-interface.js"></script>
+    <script type="text/javascript" src="assets/javascript/index.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
 </head>
 <body>
@@ -25,7 +25,7 @@
     <div class="left">
         <h1 id="name"></h1>
         <small>How about lunch with Casey today?</small>
-</div>
+    </div>
     <div class="right">
         <h1 id="time"></h1>
         <small id="date"></small>
@@ -33,5 +33,12 @@
 </div>
 
 <div id="metro">
+    {{#each events}}
+    {{> event}}
+    {{/each}}
 </div>
+
+<template name="event">
+    <div class="metro-box"></div>
+</template>
 </body>
