@@ -9,28 +9,38 @@
     <script type="text/javascript" src="../../../lib/display-utilities.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
 </head>
-<body>
+<body></body>
 
-<!-- TODO: Include Sidebar here -->
-
-<div class="top">
-    <div class="left">
-        <h1 id="name"></h1>
-        <small>How about lunch with Casey today?</small>
+<template name="sidebar">
+    <div class="sidebar">
+        <div class="upcoming"></div>
+        <div class="upcoming"></div>
+        <div class="upcoming"></div>
+        <div class="upcoming"></div>
     </div>
-    <div class="right">
-        <h1 id="time"></h1>
-        <small id="date"></small>
-    </div>
-</div>
-
-<div id="metro">
-    {{#each events}}
-        {{> event}}
-    {{/each}}
-</div>
-
-<template name="event">
-    <div class="metro-box"></div>
 </template>
-</body>
+
+<template name="index">
+    {{> sidebar}}
+
+    <div class="top">
+        <div class="left">
+            <h1 id="name"></h1>
+            <small>How about lunch with Casey today?</small>
+        </div>
+        <div class="right">
+            <h1 id="time"></h1>
+            <small id="date"></small>
+        </div>
+    </div>
+
+    <div id="metro">
+        {{#each boxes}}
+            {{> box}}
+        {{/each}}
+    </div>
+</template>
+
+<template name="box">
+    {{ html }}
+</template>

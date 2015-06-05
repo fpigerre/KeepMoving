@@ -1,7 +1,7 @@
 $font-stack: Fira, Lato, sans-serif;
 $colors: (#01E164, #0079CA, #00B7A5, #FF6A00, #E7016D, #FFDB00);
 
-@import '../includes/_sidebar';
+@import 'sidebar';
 
 body {
   font-family: $font-stack;
