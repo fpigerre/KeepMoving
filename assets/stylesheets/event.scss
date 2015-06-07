@@ -14,3 +14,19 @@ body {
 h1 {
   font-weight: 300;
 }
+
+.event {
+  float: right;
+  margin-top: 20px;
+  width: 75%;
+
+  h1 {
+    font-size: 48px;
+  }
+
+  #time-from {
+    background-color: #ED1C24;
+    border-radius: 10px;
+    width: inherit;
+  }
+}
