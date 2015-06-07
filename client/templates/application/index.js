@@ -1,14 +1,27 @@
 if (Meteor.isClient) {
+    Meteor.loginWithGoogle({requestPermissions: ['https://www.googleapis.com/auth/calendar.readonly', 'https://www.googleapis.com/auth/plus.login'], forceApprovalPrompt: true})
     var CLIENT_ID;
     var SCOPES;
+
+    $(document).ready(function () {
+        Template.index.onRendered(function () {
+            window.setTimeout(function () {
+                loadInformation();
+                checkAuth();
+            }, 5000);
+        });
+    });
 
     /**
      * Gets Google API Client ID and Scope data from a JSON file.
      */
-    $.getJSON('information.json', function (data) {
-        CLIENT_ID = data.CLIENT_ID;
-        SCOPES = data.SCOPES;
-    });
+    function loadInformation() {
+        $.getJSON('information.json', function (data) {
+            CLIENT_ID = data.CLIENT_ID;
+            SCOPES = data.SCOPES;
+            console.log("Scope success");
+        });
+    }
 
     /**
      * Check if current user has authorized this application.
@@ -20,6 +33,7 @@ if (Meteor.isClient) {
                 'scope': SCOPES,
                 'immediate': true
             }, handleAuthResult);
+        console.log("Auth success");
     }
 
     /**
@@ -52,6 +66,7 @@ if (Meteor.isClient) {
      */
 // TODO: Integrate other windows
     function loadCalendarData() {
+        console.log("Success!");
         // Set parameters for data collection
         var window = 'month';
         var today = new Date(Date.now());
@@ -139,6 +154,7 @@ if (Meteor.isClient) {
                 // Display Metro Box icon/time
                 //document.getElementById('metro').innerHTML = metroNode;
 
+                console.log(nodes);
                 Template.index.helpers({
                     boxes: [
                         {html: nodes[1]},
@@ -162,4 +178,97 @@ if (Meteor.isClient) {
             updateName(response.displayName);
         });
     }
+}
+
+/**
+ * Appends a suffix to a number, for example, the number 3
+ * returns "3rd".
+ *
+ * @param i A number
+ * @returns {string} The number with a suffix attached
+ */
+function appendSuffix(i) {
+    i = parseInt(i, 10);
+
+    var j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+        return i + "st";
+    }
+    if (j == 2 && k != 12) {
+        return i + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return i + "rd";
+    }
+    return i + "th";
+}
+
+/**
+ * Gets the name of a month from an integer
+ *
+ * @param i An integer between 1 and 12
+ * @returns {string} The name of a month, formatted as a string
+ */
+function getMonthString(i) {
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    i = parseInt(i, 10);
+    return monthNames[i];
+}
+
+/**
+ * Gets the name of a day from an integer
+ *
+ * @param i An integer between 1 and 7
+ * @returns {string} The name of a day, formatted as a string
+ */
+function getDayString(i) {
+    var dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    i = parseInt(i, 10);
+    return dayNames[i];
+}
+
+/**
+ * Update the main page with a friendly greeting featuring the
+ * user's first name.
+ *
+ * @param fullName {string} The user's full name
+ */
+function updateName(fullName) {
+    var greetings = ["Hi", "Hello", "Hey", "Howdy", "G'day"];
+
+    var date = new Date(Date.now());
+    if (date.getHours() > 6 && date.getHours() < 12) greetings.push("Good morning");
+    if (date.getHours() > 12 && date.getHours() < 18) greetings.push("Good afternoon");
+    if (date.getHours() > 18 && date.getHours() < 21) greetings.push("Good evening");
+
+    var firstName = fullName.split(' ')[0];
+    document.getElementById('name').innerHTML
+        = greetings[Math.floor(Math.random() * greetings.length)]
+        + " "
+        + firstName
+        + "!";
+}
+
+/**
+ * Launch a real-time clock
+ */
+function launchClock() {
+    var time;
+    var date = new Date(Date.now());
+
+    document.getElementById('date').innerHTML
+        = getDayString(date.getDay())
+        + ' '
+        + appendSuffix(date.getDate())
+        + ' of '
+        + getMonthString(date.getMonth());
+
+    setInterval(function () {
+        time = new Date(Date.now());
+        document.getElementById('time').innerHTML = time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
+        time = null;
+    }, 900);
 }

@@ -10,3 +10,5 @@ insecure
 jquery
 pagebakers:ionicons
 iron:router
+accounts-ui
+accounts-google
