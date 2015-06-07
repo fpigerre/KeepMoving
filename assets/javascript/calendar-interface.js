@@ -83,7 +83,7 @@ function loadCalendarData() {
             var container = document.getElementsByClassName('upcoming');
             var metroNode = '';
 
-            for (var i = 0; i < container.length; i++) {
+            for (var i = 0; i < events.length; i++) {
                 var event = events[i];
                 var when = event.start.dateTime;
                 var shortWhen;
@@ -115,22 +115,24 @@ function loadCalendarData() {
                 if (summary.length > 11) {
                     summary = '';
                     var array = event.summary.toString().split(' ');
-                    console.log(array);
                     for (var j = 0; j < array.length; j++) {
                         if (j == array.length - 1) summary = summary + array[j];
                         else summary = summary + array[j] + '<br>';
                     }
-                    console.log(summary);
                 }
 
                 // Append event data to sidebar and metro container objects
                 if (icon) {
-                    container[i].innerHTML = '<p>' + when + '</p>' + icon + '<p>' + summary + '</p>';
+                    if (i <= container.length) {
+                        container[i].innerHTML = '<p>' + when + '</p>' + icon + '<p>' + summary + '</p>';
+                    }
                     metroNode = metroNode + icon;
                     icon = null;
                 } else {
-                    container[i].innerHTML = '<p>' + when + '</p><p>' + summary + '</p>';
-                    metroNode = metroNode + '<h1>' + shortWhen +'</h1>';
+                    if (i < container.length) {
+                        container[i].innerHTML = '<p>' + when + '</p><p>' + summary + '</p>';
+                    }
+                    metroNode = metroNode + '<h1>' + shortWhen + '</h1>';
                 }
 
                 metroNode = metroNode + '</div>';
