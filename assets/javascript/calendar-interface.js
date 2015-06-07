@@ -49,14 +49,14 @@ function loadElements() {
  * Get Calendar data from the Google API, sanitize
  * and display it.
  */
-// TODO: Integrate other windows
+// TODO: Integrate other time spans
 function loadCalendarData() {
     // Set parameters for data collection
-    var window = 'month';
+    var timeSpan = 'month';
     var today = new Date(Date.now());
     var minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
     var maxDate;
-    switch (window) {
+    switch (timeSpan) {
         case 'day':
             maxDate = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate() + 1);
             break;
@@ -66,7 +66,7 @@ function loadCalendarData() {
             break;
     }
 
-    var calRequest = gapi.client.calendar.events.list({
+    var calendarRequest = gapi.client.calendar.events.list({
         'calendarId': 'primary',
         'timeMin': minDate.toISOString(),
         'timeMax': maxDate.toISOString(),
@@ -76,7 +76,7 @@ function loadCalendarData() {
         'orderBy': 'startTime'
     });
 
-    calRequest.execute(function (response) {
+    calendarRequest.execute(function (response) {
         var events = response.items;
 
         if (events.length > 0) {
@@ -88,7 +88,7 @@ function loadCalendarData() {
                 var when = event.start.dateTime;
                 var shortWhen;
                 var summary = event.summary;
-                metroNode = metroNode + '<div class=\"metro-box\">';
+                metroNode = metroNode + '<div id=\"' + event.id + '\" class=\"metro-box\">';
 
                 if (!when) {
                     // Use the event's date
@@ -142,6 +142,11 @@ function loadCalendarData() {
         } else {
             // TODO: Handle lack of events
         }
+    });
+
+
+    $(document).on('click', '.metro-box', function (callback) {
+        window.location.replace('event.html?event=' + callback.currentTarget.id);
     });
 }
 

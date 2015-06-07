@@ -90,3 +90,18 @@ function launchClock() {
         time = null;
     }, 900);
 }
+
+/**
+ * Gets the ID of an event from the window's URL
+ *
+ * @returns {string} The ID of an event
+ */
+function getEventParameter() {
+    var parameters = window.location.search.split('&');
+    for (var i = 0; i < parameters.length; i++) {
+        if (parameters[i].length > 6) {
+            if (parameters[i].substring(1, 7) === 'event=') return parameters[i].substring(7);
+        }
+    }
+    return null;
+}
