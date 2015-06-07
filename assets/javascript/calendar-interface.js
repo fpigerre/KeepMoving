@@ -114,20 +114,22 @@ function loadCalendarData() {
                 // Split long summaries into several lines
                 if (summary.length > 11) {
                     summary = '';
-                    var array = event.summary.split(' ');
+                    var array = event.summary.toString().split(' ');
+                    console.log(array);
                     for (var j = 0; j < array.length; j++) {
                         if (j == array.length - 1) summary = summary + array[j];
                         else summary = summary + array[j] + '<br>';
                     }
+                    console.log(summary);
                 }
 
                 // Append event data to sidebar and metro container objects
                 if (icon) {
-                    container[i].innerHTML = '<h3>' + when + '</h3>' + icon + '<p>' + summary + '</p>';
+                    container[i].innerHTML = '<p>' + when + '</p>' + icon + '<p>' + summary + '</p>';
                     metroNode = metroNode + icon;
                     icon = null;
                 } else {
-                    container[i].innerHTML = '<h3>' + when + '</h3><p>' + summary + '</p>';
+                    container[i].innerHTML = '<p>' + when + '</p><p>' + summary + '</p>';
                     metroNode = metroNode + '<h1>' + shortWhen +'</h1>';
                 }
 

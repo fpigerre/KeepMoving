@@ -11,34 +11,35 @@
     }
   }
 
+  .small-paragraph {
+    position: absolute;
+    bottom: 0;
+  }
+
   .upcoming {
     height: 25%;
+    position: relative;
 
-    h3, p {
-      margin: 0;
-      padding: 10px;
-      position: absolute;
-      text-transform: uppercase;
-      vertical-align: text-bottom;
-    }
-
-    h3 {
-      display: inline;
+    p {
       font-size: 30px;
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase;
 
-      small {
-        font-size: 18px;
+      // Reference directly adjacent "p" element using ampersand
+      & + p {
+        @extend .small-paragraph;
       }
     }
 
     i {
       display: inline-block;
       font-size: 48px;
-    }
 
-    p {
-      font-size: 36px;
-      padding-top: 10%;
+      // Reference directly adjacent "p" element using ampersand
+      & + p {
+        @extend .small-paragraph;
+      }
     }
   }
 }
