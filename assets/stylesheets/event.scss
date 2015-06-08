@@ -24,9 +24,56 @@ h1 {
     font-size: 48px;
   }
 
+  .time-container {
+    border-radius: 15px;
+    display: inline-block;
+    height: 50px;
+    width: 75px;
+
+    > p {
+      color: white;
+      float: left;
+      margin-top: 15px;
+      margin-left: 5px;
+    }
+
+    div {
+      background-color: white;
+      border-radius: 10px;
+      float: right;
+      height: 45px;
+      margin-top: 2.5px;
+      margin-right: 2.5px;
+      width: 25px;
+
+      p {
+        margin-top: 5px;
+        text-align: center;
+      }
+    }
+  }
+
   #time-from {
     background-color: #ED1C24;
-    border-radius: 10px;
-    width: inherit;
+  }
+
+  #time-to {
+    background-color: #2ECC40;
+  }
+  
+  .separator {
+    display: inline-block;
+    padding: 20px;
+    margin: 0;
+    vertical-align: top;
+  }
+
+  .all-day {
+    background-color: #0079CA;
+    border-radius: 20px;
+    color: white;
+    height: 75px;
+    text-align: center;
+    width: 100px;
   }
 }
