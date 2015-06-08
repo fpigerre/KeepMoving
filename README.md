@@ -13,3 +13,4 @@ Keep Moving is a calendar application that aims to keep you moving in a differen
 ## Interface Prototype
 
 ![Preliminary Interface Screenshot](http://i.imgur.com/oskQHiG.jpg)
+![Event View Screenshot](http://i.imgur.com/urUdEDZ.jpg)
