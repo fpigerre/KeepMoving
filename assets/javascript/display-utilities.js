@@ -1,3 +1,6 @@
+var CLIENT_ID = '181541807019-nhjd1lbck6osq7qnt3meoj7mstr8jstr.apps.googleusercontent.com';
+var SCOPES = 'https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/plus.login';
+
 /**
  * Appends a suffix to a number, for example, the number 3
  * returns "3rd".
