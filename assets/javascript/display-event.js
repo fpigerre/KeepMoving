@@ -24,20 +24,16 @@ function handleAuthResult(authResult) {
 }
 
 /**
- * Load Google Calendar client library. List upcoming events
- * once client library is loaded. Load and initialize other
- * elements for display
+ * Load Google Calendar client library.
  */
 function loadElements() {
     gapi.client.load('calendar', 'v3', loadEventData);
-    //gapi.client.load('plus', 'v1', initializeProfileData);
-    launchClock();
 }
 
 function loadEventData() {
     var parameter = getEventParameter();
     // TODO: Create 404 page
-    if (!parameter) window.location.replace("404.html");
+    if (!parameter) window.location.href = "404.html";
 
     var calendarRequest = gapi.client.calendar.events.get({
         'calendarId': 'primary',
@@ -46,7 +42,7 @@ function loadEventData() {
 
     calendarRequest.execute(function (response) {
         if (response.code == 404) {
-            window.location.replace("404.html")
+            window.location.href = "404.html";
         } else {
             // \xB7 is the HexCode for &middot
             document.title = 'KM \xB7 ' + response.summary;
@@ -61,6 +57,10 @@ function loadEventData() {
                 updateTimes(null, null);
             }
         }
+    });
+
+    $(document).on('click', '.ion-edit', function (callback) {
+        window.location.href = 'edit.html?event=' + getEventParameter();
     });
 }
 

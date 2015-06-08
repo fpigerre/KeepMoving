@@ -1,0 +1,62 @@
+.sidebar {
+  background-color: #DDDDDD;
+  color: white;
+  float: left;
+  height: 100vh;
+  width: 20%; }
+  .sidebar .upcoming:nth-of-type(1) {
+    background: #01E164; }
+  .sidebar .upcoming:nth-of-type(2) {
+    background: #0079CA; }
+  .sidebar .upcoming:nth-of-type(3) {
+    background: #00B7A5; }
+  .sidebar .upcoming:nth-of-type(4) {
+    background: #FF6A00; }
+  .sidebar .upcoming:nth-of-type(5) {
+    background: #E7016D; }
+  .sidebar .upcoming:nth-of-type(6) {
+    background: #FFDB00; }
+  .sidebar .small-paragraph, .sidebar .upcoming p + p, .sidebar .upcoming i + p {
+    position: absolute;
+    bottom: 0; }
+  .sidebar .upcoming {
+    height: 25%;
+    padding: 10px;
+    position: relative; }
+    .sidebar .upcoming p {
+      font-size: 30px;
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase; }
+    .sidebar .upcoming i {
+      display: inline-block;
+      font-size: 48px; }
+
+body {
+  font-family: Fira, Lato, sans-serif;
+  font-weight: 100;
+  height: 100%;
+  margin: 0;
+  overflow: hidden; }
+
+.event {
+  float: right;
+  margin-top: 20px;
+  width: 75%; }
+  .event .button {
+    cursor: pointer;
+    float: right;
+    font-size: 26px;
+    padding-right: 20px; }
+  .event textarea {
+    border: none;
+    outline: none;
+    overflow: hidden;
+    resize: none; }
+  .event #title {
+    border-bottom: 1px solid #333333;
+    font-size: 36px;
+    font-weight: 100;
+    height: 50px; }
+
+/*# sourceMappingURL=edit.css.map */
