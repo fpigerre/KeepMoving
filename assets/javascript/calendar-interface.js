@@ -133,7 +133,6 @@ function loadCalendarData() {
         }
     });
 
-
     $(document).on('click', '.metro-box', function (callback) {
         window.location.replace('event.html?event=' + callback.currentTarget.id);
     });

@@ -48,7 +48,7 @@ function getMonthString(i) {
 function getDayString(i) {
     var dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     i = parseInt(i, 10);
-    return dayNames[i];
+    return dayNames[i - 1];
 }
 
 /**
