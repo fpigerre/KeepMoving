@@ -32,7 +32,6 @@ function loadElements() {
 
 function loadEventData() {
     var parameter = getEventParameter();
-    // TODO: Create 404 page
     if (!parameter) window.location.href = "404.html";
 
     var calendarRequest = gapi.client.calendar.events.get({
