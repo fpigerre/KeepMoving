@@ -66,6 +66,10 @@ h1, h3 {
     text-align: center;
     width: 100px;
 
+    &:hover {
+      box-shadow: 3px 4px 3px #DDDDDD;
+    }
+
     * {
       padding-top: 30%;
     }
@@ -74,9 +78,5 @@ h1, h3 {
       font-size: 40px;
       margin-top: 30%;
     }
-  }
-
-  .metro-box:hover {
-    box-shadow: 3px 4px 3px #DDDDDD;
   }
 }

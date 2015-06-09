@@ -11,6 +11,15 @@ body {
   overflow: hidden;
 }
 
+textarea {
+  border: none;
+  display: block;
+  font-family: $font-stack;
+  outline: none;
+  overflow: hidden;
+  resize: none;
+}
+
 .event {
   float: right;
   margin-top: 20px;
@@ -23,17 +32,31 @@ body {
     padding-right: 20px;
   }
 
-  textarea {
-    border: none;
-    outline: none;
-    overflow: hidden;
-    resize: none;
-  }
-
   #title {
     border-bottom: 1px solid #333333;
     font-size: 36px;
     font-weight: 100;
     height: 50px;
+  }
+
+  #description {
+    border: 1px solid #333333;
+    display: inline-block;
+    height: 400px;
+    margin-top: 10%;
+    width: 50%;
+  }
+
+  #save {
+    cursor: pointer;
+    float: right;
+    font-size: 36px;
+    font-weight: 300;
+    margin-top: 10px;
+    padding: 50px;
+
+    &:hover {
+      color: #2ECC40;
+    }
   }
 }
