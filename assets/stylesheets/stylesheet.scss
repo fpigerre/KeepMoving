@@ -48,9 +48,8 @@ h1, h3 {
   color: white;
   display: table;
   float: right;
-  height: 300px;
+  height: 30%;
   margin-top: 20px;
-  overflow-x: auto;
   width: 75%;
 
   @for $i from 1 through length($colors) {
@@ -61,8 +60,10 @@ h1, h3 {
 
   .metro-box {
     cursor: pointer;
+    float: left;
     height: 100px;
     margin: 15px;
+    position: relative;
     text-align: center;
     width: 100px;
 
@@ -70,13 +71,15 @@ h1, h3 {
       box-shadow: 3px 4px 3px #DDDDDD;
     }
 
-    * {
-      padding-top: 30%;
+    i {
+      font-size: 50px;
+      display: block;
+      padding-top: 20%;
     }
 
-    i {
-      font-size: 40px;
-      margin-top: 30%;
+    h1 {
+      margin: 0;
+      padding-top: 30%;
     }
   }
 }

@@ -2,7 +2,7 @@
   background-color: #DDDDDD;
   color: white;
   float: left;
-  height: 100vh;
+  overflow: hidden;
   width: 20%;
 
   @for $i from 1 through length($colors) {
@@ -11,36 +11,28 @@
     }
   }
 
-  .small-paragraph {
-    position: absolute;
-    bottom: 0;
-  }
-
   .upcoming {
-    height: 25%;
+    height: 25vh;
     padding: 10px;
     position: relative;
 
     p {
+      display: inline-block;
       font-size: 30px;
       margin: 0;
       padding: 0;
       text-transform: uppercase;
-
-      // Reference directly adjacent "p" element using ampersand
-      & + p {
-        @extend .small-paragraph;
-      }
     }
 
     i {
       display: inline-block;
-      font-size: 48px;
+      font-size: 26px;
+      padding-left: 10px;
+    }
 
-      // Reference directly adjacent "p" element using ampersand
-      & + p {
-        @extend .small-paragraph;
-      }
+    div p {
+      position: absolute;
+      bottom: 0;
     }
   }
 }

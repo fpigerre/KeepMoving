@@ -113,13 +113,13 @@ function loadCalendarData() {
                 // Append event data to sidebar and metro container objects
                 if (icon) {
                     if (i <= container.length) {
-                        container[i].innerHTML = '<p>' + when + '</p>' + icon + '<p>' + summary + '</p>';
+                        container[i].innerHTML = '<p>' + when + '</p>' + icon + '<div><p>' + summary + '</p></div>';
                     }
                     metroNode = metroNode + icon;
                     icon = null;
                 } else {
                     if (i < container.length) {
-                        container[i].innerHTML = '<p>' + when + '</p><p>' + summary + '</p>';
+                        container[i].innerHTML = '<p>' + when + '</p><div><p>' + summary + '</p></div>';
                     }
                     metroNode = metroNode + '<h1>' + shortWhen + '</h1>';
                 }

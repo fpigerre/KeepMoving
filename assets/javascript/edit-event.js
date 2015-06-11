@@ -62,6 +62,7 @@ function patchEventData() {
 
         request.execute(function (response) {
             // ERROR: Uncaught SecurityError: Protocols must match (TLS)
+            // SOLUTION: Use // for URL (forces use of same protocol when requesting/receiving)
         });
     });
 }
