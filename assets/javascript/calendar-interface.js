@@ -69,65 +69,36 @@ function loadCalendarData() {
         var events = response.items;
 
         if (events.length > 0) {
-            var container = document.getElementsByClassName('upcoming');
-            var metroNode = '';
+            var containers = document.getElementsByClassName('upcoming');
+            var metroNodes = [];
 
             for (var i = 0; i < events.length; i++) {
                 var event = events[i];
-                var when = event.start.dateTime;
-                var shortWhen;
-                var summary = event.summary;
-                metroNode = metroNode + '<div id=\"' + event.id + '\" class=\"metro-box\">';
-
-                if (!when) {
-                    // Use the event's date
-                    var eventDate = event.start.date.substring(6).split('-');
-                    when = appendSuffix(eventDate[1]) + " of " + getMonthString(eventDate[0]);
-                    shortWhen = appendSuffix(eventDate[1]);
-                } else if (event.start.dateTime.substring(8, 10) != today.getDate()) {
-                    // Use the event's date
-                    var date = event.start.dateTime.substring(5, 10).split('-');
-                    when = appendSuffix(date[1]) + " of " + getMonthString(date[0]);
-                    shortWhen = appendSuffix(date[1]);
-                } else {
-                    // Use the event's time
-                    when = event.start.dateTime.substring(12, 16);
-                    shortWhen = when;
-                }
-
-                // Check event description for icons and prepare to display them
-                if (event.description && event.description.includes(':icon:')) {
-                    var icon = '<i class=\"' + event.description.split(':icon:').pop() + '\"></i>'
-                }
-
-                // Split long summaries into several lines
-                if (summary.length > 11) {
-                    summary = '';
-                    var array = event.summary.toString().split(' ');
-                    for (var j = 0; j < array.length; j++) {
-                        if (j == array.length - 1) summary = summary + array[j];
-                        else summary = summary + array[j] + '<br>';
-                    }
-                }
-
-                // Append event data to sidebar and metro container objects
-                if (icon) {
-                    if (i <= container.length) {
-                        container[i].innerHTML = '<p>' + when + '</p>' + icon + '<div><p>' + summary + '</p></div>';
-                    }
-                    metroNode = metroNode + icon;
-                    icon = null;
-                } else {
-                    if (i < container.length) {
-                        container[i].innerHTML = '<p>' + when + '</p><div><p>' + summary + '</p></div>';
-                    }
-                    metroNode = metroNode + '<h1>' + shortWhen + '</h1>';
-                }
-
-                metroNode = metroNode + '</div>';
+                var array = createMetroNode(event);
+                metroNodes[i] = array[0];
+                if (i < 4) containers[i].innerHTML = array[1];
             }
-            // Display Metro Box icon/time
-            document.getElementById('metro').innerHTML = metroNode;
+            // Display Metro layout boxes
+            var totalContent = '';
+            var metroContainer = document.getElementById('metro');
+
+            // Assign maximum amount of metro boxes per column
+            var maxBoxCount = 4;
+            if (metroContainer.clientHeight < 300) maxBoxCount = 3;
+            if (metroContainer.clientHeight >= 300 && metroContainer.clientHeight < 600) maxBoxCount = 6;
+
+            // Loop through entire array, incrementing by max box number
+            for (var columnStart = 0; columnStart < metroNodes.length;) {
+                // Create column element
+                totalContent += '<div class=\"column\">';
+                // Add boxes to column element (L as in Element)
+                for (var l = columnStart; l < (columnStart + maxBoxCount); l++) {
+                    if (metroNodes[l]) totalContent += metroNodes[l];
+                }
+                totalContent += '</div>';
+                columnStart += maxBoxCount;
+            }
+            metroContainer.innerHTML = totalContent;
         } else {
             // TODO: Handle lack of events
         }
@@ -136,6 +107,65 @@ function loadCalendarData() {
     $(document).on('click', '.metro-box', function (callback) {
         window.location.replace('event.html?event=' + callback.currentTarget.id);
     });
+}
+
+/**
+ * Creates two forms of elements which are able to be integrated into the calendar layout.
+ * The first of which is a "box" element, for use in the main "Metro" layout.
+ * The second is a "card" element, for use in the "upcoming events" bar.
+ *
+ * @param event An event whose details are to be used in the creation of a node
+ * @returns {string[]} An array containing two items: a box type element and a card type element
+ */
+function createMetroNode(event) {
+    var when = event.start.dateTime;
+    var shortWhen;
+    var summary = event.summary;
+    var box = '<div id=\"' + event.id + '\" class=\"metro-box\">';
+    var card = '';
+
+    if (!when) {
+        // Use the event's date
+        var eventDate = event.start.date.substring(6).split('-');
+        when = appendSuffix(eventDate[1]) + " of " + getMonthString(eventDate[0]);
+        shortWhen = appendSuffix(eventDate[1]);
+    } else if (event.start.dateTime.substring(8, 10) != today.getDate()) {
+        // Use the event's date
+        var date = event.start.dateTime.substring(5, 10).split('-');
+        when = appendSuffix(date[1]) + " of " + getMonthString(date[0]);
+        shortWhen = appendSuffix(date[1]);
+    } else {
+        // Use the event's time
+        when = event.start.dateTime.substring(12, 16);
+        shortWhen = when;
+    }
+
+    // Check event description for icons and prepare to display them
+    if (event.description && event.description.includes(':icon:')) {
+        var icon = '<i class=\"' + event.description.split(':icon:').pop() + '\"></i>'
+    }
+
+    // Split long summaries into several lines
+    if (summary.length > 11) {
+        summary = '';
+        var array = event.summary.toString().split(' ');
+        for (var j = 0; j < array.length; j++) {
+            if (j == array.length - 1) summary = summary + array[j];
+            else summary = summary + array[j] + '<br>';
+        }
+    }
+
+    // Append event data to sidebar and metro container objects
+    if (icon) {
+        card = '<p>' + when + '</p>' + icon + '<div><p>' + summary + '</p></div>';
+        box += icon;
+        icon = null;
+    } else {
+        card = '<p>' + when + '</p><div><p>' + summary + '</p></div>';
+        box += '<h1>' + shortWhen + '</h1>';
+    }
+    box += '</div>';
+    return [box, card];
 }
 
 /**

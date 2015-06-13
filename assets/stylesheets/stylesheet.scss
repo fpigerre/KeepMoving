@@ -46,11 +46,15 @@ h1, h3 {
 
 #metro {
   color: white;
-  display: table;
   float: right;
   height: 30%;
   margin-top: 20px;
   width: 75%;
+
+  .column {
+    display: inline-block;
+    height: 100%;
+  }
 
   @for $i from 1 through length($colors) {
     .metro-box:nth-of-type(#{$i}) {
