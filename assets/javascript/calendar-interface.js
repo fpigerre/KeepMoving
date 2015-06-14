@@ -78,6 +78,7 @@ function loadCalendarData() {
                 metroNodes[i] = array[0];
                 if (i < 4) containers[i].innerHTML = array[1];
             }
+
             // Display Metro layout boxes
             var totalContent = '';
             var metroContainer = document.getElementById('metro');
@@ -85,7 +86,8 @@ function loadCalendarData() {
             // Assign maximum amount of metro boxes per column
             var maxBoxCount = 4;
             if (metroContainer.clientHeight < 300) maxBoxCount = 3;
-            if (metroContainer.clientHeight >= 300 && metroContainer.clientHeight < 600) maxBoxCount = 6;
+            if (metroContainer.clientHeight >= 300 && metroContainer.clientHeight < 450) maxBoxCount = 4;
+            if (metroContainer.clientHeight >= 450 && metroContainer.clientHeight < 600) maxBoxCount = 6;
 
             // Loop through entire array, incrementing by max box number
             for (var columnStart = 0; columnStart < metroNodes.length;) {
@@ -129,7 +131,7 @@ function createMetroNode(event) {
         var eventDate = event.start.date.substring(6).split('-');
         when = appendSuffix(eventDate[1]) + " of " + getMonthString(eventDate[0]);
         shortWhen = appendSuffix(eventDate[1]);
-    } else if (event.start.dateTime.substring(8, 10) != today.getDate()) {
+    } else if (event.start.dateTime.substring(8, 10) != new Date(Date.now()).getDate()) {
         // Use the event's date
         var date = event.start.dateTime.substring(5, 10).split('-');
         when = appendSuffix(date[1]) + " of " + getMonthString(date[0]);

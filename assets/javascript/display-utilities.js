@@ -46,9 +46,9 @@ function getMonthString(i) {
  * @returns {string} The name of a day, formatted as a string
  */
 function getDayString(i) {
-    var dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     i = parseInt(i, 10);
-    return dayNames[i - 1];
+    return dayNames[i];
 }
 
 /**

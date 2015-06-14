@@ -47,19 +47,20 @@ h1, h3 {
 #metro {
   color: white;
   float: right;
-  height: 30%;
+  height: 350px;
   width: 75%;
-
-  .column {
-    display: inline-block;
-    height: 100%;
-    width: 115px;
-  }
 
   @for $i from 1 through length($colors) {
     .metro-box:nth-of-type(#{$i}) {
       background: nth($colors, $i);
+      content: #{$i};
     }
+  }
+
+  .column {
+    display: inline-block;
+    height: inherit;
+    width: 115px;
   }
 
   .metro-box {
@@ -69,6 +70,7 @@ h1, h3 {
     margin: 7.5px;
     position: relative;
     text-align: center;
+    vertical-align: top;
     width: 100px;
 
     &:hover {
