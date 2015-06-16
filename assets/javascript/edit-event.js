@@ -4,6 +4,7 @@ var eventParameter;
  * Check if current user has authorized this application.
  */
 function checkAuth() {
+    forceTLS();
     gapi.auth.authorize(
         {
             'client_id': CLIENT_ID,

@@ -2,8 +2,17 @@ var CLIENT_ID = '181541807019-nhjd1lbck6osq7qnt3meoj7mstr8jstr.apps.googleuserco
 var SCOPES = 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/plus.login';
 
 /**
+ * Force the use of Transport Layer Security (SSL/HTTPS) on a particular page
+ */
+function forceTLS() {
+    var host = window.location.host;
+    if ((host == 'psgs.github.io' || host == 'psgs.tk') && (window.location.protocol != 'https:'))
+        window.location.protocol = 'https';
+}
+
+/**
  * Appends a suffix to a number, for example, the number 3
- * returns "3rd".
+ * returns "3rd"
  *
  * @param i A number
  * @returns {string} The number with a suffix attached
