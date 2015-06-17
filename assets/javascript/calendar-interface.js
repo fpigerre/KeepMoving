@@ -132,7 +132,7 @@ function createMetroNode(event) {
         var eventDate = event.start.date.substring(6).split('-');
         when = appendSuffix(eventDate[1]) + " of " + getMonthString(eventDate[0]);
         shortWhen = appendSuffix(eventDate[1]);
-    } else if (event.start.dateTime.substring(8, 10) != new Date(Date.now()).getDate()) {
+    } else if (event.start.dateTime.substring(8, 10) != new Date(Date.now()).getDate() || event.start.dateTime.substring(5, 7) != new Date(Date.now()).getMonth()) {
         // Use the event's date
         var date = event.start.dateTime.substring(5, 10).split('-');
         when = appendSuffix(date[1]) + " of " + getMonthString(date[0]);
