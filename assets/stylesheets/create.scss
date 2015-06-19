@@ -1,1 +1,59 @@
-// Creation CSS
+$font-stack: Fira, Lato, sans-serif;
+$colors: (#01E164, #0079CA, #00B7A5, #FF6A00, #E7016D, #FFDB00);
+
+@import 'sidebar';
+
+body {
+  font-family: $font-stack;
+  font-weight: 100;
+  height: 100%;
+  margin: 0;
+}
+
+textarea {
+  border: none;
+  display: block;
+  font-family: $font-stack;
+  outline: none;
+  overflow: hidden;
+  resize: none;
+}
+
+.event {
+  float: right;
+  margin-top: 20px;
+  width: 75%;
+
+  .button {
+    cursor: pointer;
+    float: right;
+    font-size: 26px;
+    padding-right: 20px;
+  }
+
+  #title {
+    border-bottom: 1px solid #333333;
+    font-size: 36px;
+    font-weight: 100;
+    height: 50px;
+  }
+
+  #description {
+    border: 1px solid #333333;
+    display: inline-block;
+    height: 400px;
+    margin-top: 10%;
+    width: 50%;
+  }
+
+  #save {
+    cursor: pointer;
+    float: right;
+    font-size: 36px;
+    font-weight: 300;
+
+    &:hover {
+      color: #2ECC40;
+    }
+  }
+}
