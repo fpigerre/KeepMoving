@@ -30,10 +30,10 @@ function handleAuthResult(authResult) {
 function loadElements() {
     gapi.client.load('calendar', 'v3');
 
-    $('button').click(function () {
-        var date = new Date(Date.now());
-        createEvent("Testing", "Test Location", date, new Date(date + 1));
-    });
+    $('#date-from').pickadate();
+    $('#date-to').pickadate();
+    $('#time-from').pickatime();
+    $('#time-to').pickatime();
 }
 
 /**

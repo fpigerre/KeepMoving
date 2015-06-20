@@ -7,11 +7,17 @@
 
     <!-- Styling -->
     <link rel="stylesheet" type="text/css" href="assets/stylesheets/create.css">
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/datepicker.css">
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/datepicker.date.css">
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/datepicker.time.css">
     <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
 
     <!-- JavaScript -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/picker.js"></script>
+    <script type="text/javascript" src="assets/javascript/picker.date.js"></script>
+    <script type="text/javascript" src="assets/javascript/picker.time.js"></script>
     <script type="text/javascript" src="assets/javascript/display-utilities.js"></script>
     <script type="text/javascript" src="assets/javascript/create-event.js"></script>
     <script src="//apis.google.com/js/client.js?onload=checkAuth"></script>
@@ -28,32 +34,47 @@
     <a href="index.html" class="button"><i class="ion-close-round"></i></a>
     <i class="ion-edit button"></i>
 
-    <h1 id="title"></h1>
+    <textarea id="title" placeholder="Dinner with Bruce"></textarea>
 
-    <div id="time-from" class="time-container">
-        <p class="time">10:30</p>
+    <div id="dates">
+        <input id="date-from" class="timing-selector" placeholder="Today">
 
-        <div>
-            <p>A<br>M</p>
-        </div>
-    </div>
-    <p class="separator">TO</p>
+        <p class="separator">TO</p>
 
-    <div id="time-to" class="time-container">
-        <p class="time">10:30</p>
-
-        <div>
-            <p>A<br>M</p>
-        </div>
+        <input id="date-to" class="timing-selector" placeholder="Tomorrow">
     </div>
 
-    <h4>Description</h4>
+    <div class="switch">
+        <input id="all-day" class="toggle toggle-round" type="checkbox">
+        <label for="all-day"></label>
+    </div>
 
-    <div id="description"></div>
-    <div id="map"></div>
+    <div id="times">
+        <input id="time-from" class="timing-selector" placeholder="10:30 AM">
 
-    <div id="color"></div>
+        <p class="separator">TO</p>
+
+        <input id="time-to" class="timing-selector" placeholder="12:40 PM">
+    </div>
+
+    <div class="columns">
+        <div class="column">
+            <h4>Description</h4>
+
+            <textarea id="description" placeholder="Don't forget to bring the vegemite"></textarea>
+        </div>
+        <div class="column">
+            <h4>Location</h4>
+            <div id="location">
+                <textarea placeholder="1600 Pennsylvania Ave NW Washington, DC 20500 United States"></textarea>
+            </div>
+
+            <h4>Event Color</h4>
+            <div id="color">
+
+            </div>
+        </div>
+    </div>
 </div>
-<button id="test">Test this function</button>
 </body>
 </html>

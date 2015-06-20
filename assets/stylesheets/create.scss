@@ -2,6 +2,7 @@ $font-stack: Fira, Lato, sans-serif;
 $colors: (#01E164, #0079CA, #00B7A5, #FF6A00, #E7016D, #FFDB00);
 
 @import 'sidebar';
+@import 'switch';
 
 body {
   font-family: $font-stack;
@@ -22,6 +23,7 @@ textarea {
 .event {
   float: right;
   margin-top: 20px;
+  position: relative;
   width: 75%;
 
   .button {
@@ -38,12 +40,30 @@ textarea {
     height: 50px;
   }
 
+  #dates {
+    display: inline-block;
+  }
+
+  .timing-selector,
+  .separator {
+    display: inline-block;
+    padding: 10px;
+  }
+
+  .switch {
+    display: inline-block;
+    padding-left: 20px;
+    vertical-align: middle;
+  }
+
   #description {
     border: 1px solid #333333;
-    display: inline-block;
-    height: 400px;
-    margin-top: 10%;
-    width: 50%;
+    padding: 10px;
+  }
+
+  #location textarea {
+    border: 1px solid #333333;
+    padding: 10px;
   }
 
   #save {
@@ -54,6 +74,21 @@ textarea {
 
     &:hover {
       color: #2ECC40;
+    }
+  }
+
+  .columns {
+    .column {
+      display: inline-block;
+      width: 45%;
+    }
+
+    .column:nth-child(1) {
+      float: left;
+    }
+
+    .column:nth-child(2) {
+      float: right;
     }
   }
 }
