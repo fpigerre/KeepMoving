@@ -1,5 +1,4 @@
-KeepMoving
-==========
+[Header Illustration](http://i.imgur.com/8rRvRa6.png)
 
 Keep Moving is a calendar application that aims to keep you moving in a different way.
 
