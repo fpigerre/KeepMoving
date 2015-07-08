@@ -1,0 +1,104 @@
+.sidebar {
+  background-color: #DDDDDD;
+  color: white;
+  float: left;
+  overflow: hidden;
+  width: 20%; }
+  .sidebar .upcoming:nth-of-type(1) {
+    background: #01E164; }
+  .sidebar .upcoming:nth-of-type(2) {
+    background: #0079CA; }
+  .sidebar .upcoming:nth-of-type(3) {
+    background: #00B7A5; }
+  .sidebar .upcoming:nth-of-type(4) {
+    background: #FF6A00; }
+  .sidebar .upcoming:nth-of-type(5) {
+    background: #E7016D; }
+  .sidebar .upcoming:nth-of-type(6) {
+    background: #FFDB00; }
+  .sidebar .upcoming {
+    height: 25vh;
+    padding: 10px;
+    position: relative; }
+    .sidebar .upcoming p {
+      display: inline-block;
+      font-size: 30px;
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase; }
+    .sidebar .upcoming i {
+      display: inline-block;
+      font-size: 26px;
+      padding-left: 10px; }
+    .sidebar .upcoming div p {
+      position: absolute;
+      bottom: 0; }
+
+body {
+  font-family: Fira, Lato, sans-serif;
+  font-weight: 100;
+  height: 100%;
+  margin: 0;
+  overflow: hidden; }
+
+h1 {
+  font-weight: 300; }
+
+h4 {
+  font-weight: 300;
+  text-transform: uppercase; }
+
+a:visited {
+  color: inherit; }
+
+.event {
+  float: right;
+  margin-top: 20px;
+  width: 75%; }
+  .event .button {
+    cursor: pointer;
+    float: right;
+    font-size: 26px;
+    padding-right: 20px; }
+  .event h1 {
+    font-size: 48px; }
+  .event .time-container {
+    border-radius: 10px;
+    display: inline-block;
+    font-size: 25px;
+    height: 60px;
+    line-height: 95%;
+    width: 120px; }
+    .event .time-container > p {
+      color: white;
+      float: left;
+      margin-top: 20px;
+      margin-left: 7px; }
+    .event .time-container div {
+      background-color: white;
+      border-radius: 7px;
+      float: right;
+      height: 55px;
+      margin-top: 3px;
+      margin-right: 3px;
+      width: 30px; }
+      .event .time-container div p {
+        margin-top: 5px;
+        text-align: center; }
+  .event #time-from {
+    background-color: #ED1C24; }
+  .event #time-to {
+    background-color: #2ECC40; }
+  .event .separator {
+    display: inline-block;
+    font-weight: 300;
+    padding: 20px;
+    margin: 0;
+    vertical-align: top; }
+  .event .all-day {
+    background-color: #0079CA;
+    border-radius: 20px;
+    color: white;
+    height: 75px;
+    text-align: center;
+    width: 100px; }

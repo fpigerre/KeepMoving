@@ -1,0 +1,146 @@
+.sidebar {
+  background-color: #DDDDDD;
+  color: white;
+  float: left;
+  overflow: hidden;
+  width: 20%; }
+  .sidebar .upcoming:nth-of-type(1) {
+    background: #01E164; }
+  .sidebar .upcoming:nth-of-type(2) {
+    background: #0079CA; }
+  .sidebar .upcoming:nth-of-type(3) {
+    background: #00B7A5; }
+  .sidebar .upcoming:nth-of-type(4) {
+    background: #FF6A00; }
+  .sidebar .upcoming:nth-of-type(5) {
+    background: #E7016D; }
+  .sidebar .upcoming:nth-of-type(6) {
+    background: #FFDB00; }
+  .sidebar .upcoming {
+    height: 25vh;
+    padding: 10px;
+    position: relative; }
+    .sidebar .upcoming p {
+      display: inline-block;
+      font-size: 30px;
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase; }
+    .sidebar .upcoming i {
+      display: inline-block;
+      font-size: 26px;
+      padding-left: 10px; }
+    .sidebar .upcoming div p {
+      position: absolute;
+      bottom: 0; }
+
+/*
+* Thanks Nick from callmenick.com for providing the following tutorial!
+* http://callmenick.com/post/css-toggle-switch-examples
+*/
+.toggle {
+  position: absolute;
+  visibility: hidden;
+  display: none; }
+
+.toggle + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none; }
+
+input.toggle-round + label {
+  padding: 2px;
+  width: 60px;
+  height: 30px;
+  background-color: #dddddd;
+  border-radius: 60px; }
+
+input.toggle-round + label:before,
+input.toggle-round + label:after {
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  content: ""; }
+
+input.toggle-round + label:before {
+  right: 1px;
+  background-color: #F1F1F1;
+  border-radius: 30px;
+  transition: background 0.4s; }
+
+input.toggle-round + label:after {
+  width: 30px;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: margin 0.4s; }
+
+input.toggle-round:checked + label:before {
+  background-color: #8CE196; }
+
+input.toggle-round:checked + label:after {
+  margin-left: 32px; }
+
+body {
+  font-family: Fira, Lato, sans-serif;
+  font-weight: 100;
+  height: 100%;
+  margin: 0; }
+
+textarea {
+  border: none;
+  display: block;
+  font-family: Fira, Lato, sans-serif;
+  outline: none;
+  overflow: hidden;
+  resize: none; }
+
+.event {
+  float: right;
+  margin-top: 20px;
+  position: relative;
+  width: 75%; }
+  .event .button {
+    cursor: pointer;
+    float: right;
+    font-size: 26px;
+    padding-right: 20px; }
+  .event #title {
+    border-bottom: 1px solid #333333;
+    font-size: 36px;
+    font-weight: 100;
+    height: 50px; }
+  .event #dates {
+    display: inline-block; }
+  .event .timing-selector,
+  .event .separator {
+    display: inline-block;
+    padding: 10px; }
+  .event .switch {
+    display: inline-block;
+    padding-left: 20px;
+    vertical-align: middle; }
+  .event #description {
+    border: 1px solid #333333;
+    padding: 10px; }
+  .event #location textarea {
+    border: 1px solid #333333;
+    padding: 10px; }
+  .event #save {
+    cursor: pointer;
+    float: right;
+    font-size: 36px;
+    font-weight: 300; }
+    .event #save:hover {
+      color: #2ECC40; }
+  .event .columns .column {
+    display: inline-block;
+    width: 45%; }
+  .event .columns .column:nth-child(1) {
+    float: left; }
+  .event .columns .column:nth-child(2) {
+    float: right; }

@@ -1,0 +1,52 @@
+@font-face {
+  font-family: Roboto, sans-serif;
+  src: url("../fonts/Roboto-Regular.ttf"); }
+
+body {
+  font-family: Lato, sans-serif;
+  margin: 50px; }
+
+.header {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 40%;
+  width: 70%; }
+
+#authorize-div {
+  margin: 10% auto;
+  width: 300px;
+  text-align: center; }
+
+/* Google Sign-In Button */
+#signin {
+  cursor: hand;
+  display: inline-block;
+  background: #4285F4;
+  color: white;
+  width: 190px;
+  border-radius: 5px;
+  white-space: nowrap; }
+  #signin span.label {
+    font-weight: bold; }
+  #signin span.icon {
+    background: url("../images/g-normal.png") transparent 5px 50% no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    width: 42px;
+    height: 42px;
+    border-right: #2265D4 1px solid; }
+  #signin span.buttonText {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 42px;
+    padding-right: 42px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Roboto, sans-serif; }
+
+@media (max-width: 600px) {
+  body {
+    margin: 50px 0; }
+  .header {
+    width: 100%; } }

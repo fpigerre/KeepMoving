@@ -1,0 +1,78 @@
+.sidebar {
+  background-color: #DDDDDD;
+  color: white;
+  float: left;
+  overflow: hidden;
+  width: 20%; }
+  .sidebar .upcoming:nth-of-type(1) {
+    background: #01E164; }
+  .sidebar .upcoming:nth-of-type(2) {
+    background: #0079CA; }
+  .sidebar .upcoming:nth-of-type(3) {
+    background: #00B7A5; }
+  .sidebar .upcoming:nth-of-type(4) {
+    background: #FF6A00; }
+  .sidebar .upcoming:nth-of-type(5) {
+    background: #E7016D; }
+  .sidebar .upcoming:nth-of-type(6) {
+    background: #FFDB00; }
+  .sidebar .upcoming {
+    height: 25vh;
+    padding: 10px;
+    position: relative; }
+    .sidebar .upcoming p {
+      display: inline-block;
+      font-size: 30px;
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase; }
+    .sidebar .upcoming i {
+      display: inline-block;
+      font-size: 26px;
+      padding-left: 10px; }
+    .sidebar .upcoming div p {
+      position: absolute;
+      bottom: 0; }
+
+body {
+  font-family: Fira, Lato, sans-serif;
+  font-weight: 100;
+  height: 100%;
+  margin: 0;
+  overflow: hidden; }
+
+textarea {
+  border: none;
+  display: block;
+  font-family: Fira, Lato, sans-serif;
+  outline: none;
+  overflow: hidden;
+  resize: none; }
+
+.event {
+  float: right;
+  margin-top: 20px;
+  width: 75%; }
+  .event .button {
+    cursor: pointer;
+    float: right;
+    font-size: 26px;
+    padding-right: 20px; }
+  .event #title {
+    border-bottom: 1px solid #333333;
+    font-size: 36px;
+    font-weight: 100;
+    height: 50px; }
+  .event #description {
+    border: 1px solid #333333;
+    display: inline-block;
+    height: 400px;
+    margin-top: 10%;
+    width: 50%; }
+  .event #save {
+    cursor: pointer;
+    float: right;
+    font-size: 36px;
+    font-weight: 300; }
+    .event #save:hover {
+      color: #2ECC40; }

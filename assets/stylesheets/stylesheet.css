@@ -1,0 +1,108 @@
+.sidebar {
+  background-color: #DDDDDD;
+  color: white;
+  float: left;
+  overflow: hidden;
+  width: 20%; }
+  .sidebar .upcoming:nth-of-type(1) {
+    background: #01E164; }
+  .sidebar .upcoming:nth-of-type(2) {
+    background: #0079CA; }
+  .sidebar .upcoming:nth-of-type(3) {
+    background: #00B7A5; }
+  .sidebar .upcoming:nth-of-type(4) {
+    background: #FF6A00; }
+  .sidebar .upcoming:nth-of-type(5) {
+    background: #E7016D; }
+  .sidebar .upcoming:nth-of-type(6) {
+    background: #FFDB00; }
+  .sidebar .upcoming {
+    height: 25vh;
+    padding: 10px;
+    position: relative; }
+    .sidebar .upcoming p {
+      display: inline-block;
+      font-size: 30px;
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase; }
+    .sidebar .upcoming i {
+      display: inline-block;
+      font-size: 26px;
+      padding-left: 10px; }
+    .sidebar .upcoming div p {
+      position: absolute;
+      bottom: 0; }
+
+body {
+  font-family: Fira, Lato, sans-serif;
+  font-weight: 100;
+  height: 100%;
+  margin: 0; }
+
+h1, h3 {
+  font-weight: 300; }
+
+.top {
+  display: inline-block;
+  float: right;
+  width: 79%; }
+  .top h1 {
+    font-size: 50px;
+    margin: 0; }
+  .top small {
+    font-size: 34px; }
+  .top .left, .top .right {
+    display: inline-block;
+    padding: 30px; }
+  .top .right {
+    float: right;
+    text-align: center; }
+    .top .right #date {
+      font-size: 28px; }
+
+#metro {
+  color: white;
+  float: right;
+  height: 350px;
+  width: 75%; }
+  #metro .metro-box:nth-of-type(1) {
+    background: #01E164;
+    content: 1; }
+  #metro .metro-box:nth-of-type(2) {
+    background: #0079CA;
+    content: 2; }
+  #metro .metro-box:nth-of-type(3) {
+    background: #00B7A5;
+    content: 3; }
+  #metro .metro-box:nth-of-type(4) {
+    background: #FF6A00;
+    content: 4; }
+  #metro .metro-box:nth-of-type(5) {
+    background: #E7016D;
+    content: 5; }
+  #metro .metro-box:nth-of-type(6) {
+    background: #FFDB00;
+    content: 6; }
+  #metro .column {
+    display: inline-block;
+    height: inherit;
+    width: 115px; }
+  #metro .metro-box {
+    cursor: pointer;
+    float: left;
+    height: 100px;
+    margin: 7.5px;
+    position: relative;
+    text-align: center;
+    vertical-align: top;
+    width: 100px; }
+    #metro .metro-box:hover {
+      box-shadow: 3px 4px 3px #DDDDDD; }
+    #metro .metro-box i {
+      font-size: 50px;
+      display: block;
+      padding-top: 20%; }
+    #metro .metro-box h1 {
+      margin: 0;
+      padding-top: 30%; }
