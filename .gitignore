@@ -31,10 +31,12 @@ cordova/
 
 ### Styling ###
 
-assets/stylesheets/authentication.css
 assets/stylesheets/_sidebar.css
-assets/stylesheets/stylesheet.css
-assets/stylesheets/event.css
-assets/stylesheets/edit.css
-assets/stylesheets/create.css
+asset/stylesheets/_switch.css
+
 assets/stylesheets/*.map
+assets/stylesheets/authentication.css
+assets/stylesheets/create.css
+assets/stylesheets/edit.css
+assets/stylesheets/event.css
+assets/stylesheets/stylesheet.css

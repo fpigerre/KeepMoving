@@ -10,14 +10,13 @@ body {
   margin: 50px;
 }
 
-.logo {
+.header {
   display: block;
   margin-left: auto;
   margin-right: auto;
 
-  // Perspective ratio must be retained
-  height: 211px;
-  width: 216px;
+  height: 40%;
+  width: 70%;
 }
 
 #authorize-div {
@@ -57,5 +56,15 @@ body {
     font-size: 14px;
     font-weight: bold;
     font-family: Roboto, sans-serif;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    margin: 50px 0;
+  }
+
+  .header {
+    width: 100%;
   }
 }
