@@ -89,10 +89,14 @@ a:visited {
 
   .all-day {
     background-color: #0079CA;
-    border-radius: 20px;
+    border-radius: 10px;
     color: white;
-    height: 75px;
+    height: 50px;
     text-align: center;
     width: 100px;
+
+    p {
+      padding: 15% 0;
+    }
   }
 }

@@ -119,6 +119,65 @@ function getEventParameter() {
 }
 
 /**
+ * Creates two forms of elements which are able to be integrated into the calendar layout.
+ * The first of which is a "box" element, for use in the main "Metro" layout.
+ * The second is a "card" element, for use in the "upcoming events" bar.
+ *
+ * @param event An event whose details are to be used in the creation of a node
+ * @returns {string[]} An array containing two items: a box type element and a card type element
+ */
+function createMetroNode(event) {
+    var when = event.start.dateTime;
+    var shortWhen;
+    var summary = event.summary;
+    var box = '<div id=\"' + event.id + '\" class=\"metro-box\">';
+    var card = '';
+
+    if (!when) {
+        // Use the event's date
+        var eventDate = event.start.date.substring(6).split('-');
+        when = appendSuffix(eventDate[1]) + " of " + getMonthString(eventDate[0]);
+        shortWhen = appendSuffix(eventDate[1]);
+    } else if (event.start.dateTime.substring(8, 10) != new Date(Date.now()).getDate() || event.start.dateTime.substring(5, 7) != new Date(Date.now()).getMonth()) {
+        // Use the event's date
+        var date = event.start.dateTime.substring(5, 10).split('-');
+        when = appendSuffix(date[1]) + " of " + getMonthString(date[0]);
+        shortWhen = appendSuffix(date[1]);
+    } else {
+        // Use the event's time
+        when = event.start.dateTime.substring(12, 16);
+        shortWhen = when;
+    }
+
+    // Check event description for icons and prepare to display them
+    if (event.description && event.description.includes(':icon:')) {
+        var icon = '<i class=\"' + event.description.split(':icon:').pop() + '\"></i>'
+    }
+
+    // Split long summaries into several lines
+    if (summary.length > 11) {
+        summary = '';
+        var array = event.summary.toString().split(' ');
+        for (var j = 0; j < array.length; j++) {
+            if (j == array.length - 1) summary = summary + array[j];
+            else summary = summary + array[j] + '<br>';
+        }
+    }
+
+    // Append event data to sidebar and metro container objects
+    if (icon) {
+        card = '<p>' + when + '</p>' + icon + '<div><p>' + summary + '</p></div>';
+        box += icon;
+        icon = null;
+    } else {
+        card = '<p>' + when + '</p><div><p>' + summary + '</p></div>';
+        box += '<h1>' + shortWhen + '</h1>';
+    }
+    box += '</div>';
+    return [box, card];
+}
+
+/**
  * Allows DOM elements to be removed with ease
  * For more information, please see
  * http://stackoverflow.com/questions/3387427/remove-element-by-id

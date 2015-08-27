@@ -29,6 +29,7 @@ function handleAuthResult(authResult) {
  */
 function loadElements() {
     gapi.client.load('calendar', 'v3', loadEventData);
+    gapi.client.load('calendar', 'v3', loadSidebarEvents);
 }
 
 function loadEventData() {
@@ -61,6 +62,47 @@ function loadEventData() {
 
     $(document).on('click', '.ion-edit', function (callback) {
         window.location.href = 'edit.html?event=' + getEventParameter();
+    });
+}
+
+function loadSidebarEvents() {
+    // Set parameters for data collection
+    var timeSpan = 'month';
+    var today = new Date(Date.now());
+    var minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    var maxDate;
+    switch (timeSpan) {
+        case 'day':
+            maxDate = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate() + 1);
+            break;
+
+        case 'month':
+            maxDate = new Date(minDate.getFullYear(), minDate.getMonth() + 1, minDate.getDate() + 1);
+            break;
+    }
+
+    var calendarRequest = gapi.client.calendar.events.list({
+        'calendarId': 'primary',
+        'timeMin': minDate.toISOString(),
+        'timeMax': maxDate.toISOString(),
+        'showDeleted': false,
+        'singleEvents': true,
+        'maxResults': 10,
+        'orderBy': 'startTime'
+    });
+
+    calendarRequest.execute(function (response) {
+        var events = response.items;
+
+        if (events.length > 0) {
+            var containers = document.getElementsByClassName('upcoming');
+
+            for (var i = 0; i < events.length; i++) {
+                var event = events[i];
+                var array = createMetroNode(event);
+                if (i < 4) containers[i].innerHTML = array[1];
+            }
+        }
     });
 }
 
