@@ -31,6 +31,7 @@ function handleAuthResult(authResult) {
  */
 function loadElements() {
     gapi.client.load('calendar', 'v3', loadEventData);
+    gapi.client.load('calendar', 'v3', loadSidebarEvents);
     patchEventData();
 }
 

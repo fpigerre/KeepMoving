@@ -178,6 +178,51 @@ function createMetroNode(event) {
 }
 
 /**
+ * Places event cards returned from createMetroNode() into the
+ * sidebar of a page.
+ */
+function loadSidebarEvents() {
+    // Set parameters for data collection
+    var timeSpan = 'month';
+    var today = new Date(Date.now());
+    var minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    var maxDate;
+    switch (timeSpan) {
+        case 'day':
+            maxDate = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate() + 1);
+            break;
+
+        case 'month':
+            maxDate = new Date(minDate.getFullYear(), minDate.getMonth() + 1, minDate.getDate() + 1);
+            break;
+    }
+
+    var calendarRequest = gapi.client.calendar.events.list({
+        'calendarId': 'primary',
+        'timeMin': minDate.toISOString(),
+        'timeMax': maxDate.toISOString(),
+        'showDeleted': false,
+        'singleEvents': true,
+        'maxResults': 10,
+        'orderBy': 'startTime'
+    });
+
+    calendarRequest.execute(function (response) {
+        var events = response.items;
+
+        if (events.length > 0) {
+            var containers = document.querySelector('.sidebar').getElementsByClassName('upcoming');
+
+            for (var i = 0; i < events.length; i++) {
+                var event = events[i];
+                var array = createMetroNode(event);
+                if (i < 4) containers[i].innerHTML = array[1];
+            }
+        }
+    });
+}
+
+/**
  * Allows DOM elements to be removed with ease
  * For more information, please see
  * http://stackoverflow.com/questions/3387427/remove-element-by-id
