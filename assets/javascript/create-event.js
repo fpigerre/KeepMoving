@@ -28,7 +28,7 @@ function handleAuthResult(authResult) {
  * Load Google Calendar client library.
  */
 function loadElements() {
-    gapi.client.load('calendar', 'v3');
+    gapi.client.load('calendar', 'v3', loadSidebarEvents);
 
     $('#date-from').pickadate();
     $('#date-to').pickadate();
