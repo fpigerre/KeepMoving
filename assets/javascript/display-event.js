@@ -49,7 +49,9 @@ function loadEventData() {
             document.title = 'KM \xB7 ' + response.summary;
 
             document.getElementById('title').innerHTML = response.summary;
-            document.getElementById('description').innerHTML = response.description;
+            if (response.description != null) {
+                document.getElementById('description').innerHTML = response.description;
+            }
 
             if (response.start.dateTime && response.end.dateTime) {
                 updateTimes(new Date(response.start.dateTime), new Date(response.end.dateTime));
