@@ -219,6 +219,7 @@ function loadSidebarEvents() {
                 if (i < 4) containers[i].innerHTML = array[1];
             }
         }
+        $('.sidebar .upcoming').textfill();
     });
 }
 
