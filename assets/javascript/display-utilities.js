@@ -166,11 +166,11 @@ function createMetroNode(event) {
 
     // Append event data to sidebar and metro container objects
     if (icon) {
-        card = '<p>' + when + '</p>' + icon + '<div><p>' + summary + '</p></div>';
+        card = '<span>' + when + '</span>' + icon + '<div><span>' + summary + '</span></div>';
         box += icon;
         icon = null;
     } else {
-        card = '<p>' + when + '</p><div><p>' + summary + '</p></div>';
+        card = '<span>' + when + '</span><div><span>' + summary + '</span></div>';
         box += '<h1>' + shortWhen + '</h1>';
     }
     box += '</div>';
@@ -216,10 +216,10 @@ function loadSidebarEvents() {
             for (var i = 0; i < events.length; i++) {
                 var event = events[i];
                 var array = createMetroNode(event);
-                if (i < 4) containers[i].innerHTML = array[1];
+                if (i < 4) containers[i].querySelector('.text-wrapper').innerHTML = array[1];
             }
         }
-        $('.sidebar .upcoming').textfill();
+        $('.text-wrapper span').textfill({minFontPixels: 200, debug: true});
     });
 }
 

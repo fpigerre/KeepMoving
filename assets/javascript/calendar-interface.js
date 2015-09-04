@@ -30,17 +30,18 @@ function handleAuthResult(authResult) {
  * elements for display
  */
 function loadElements() {
-    gapi.client.load('calendar', 'v3', loadCalendarData);
+    gapi.client.load('calendar', 'v3', loadSidebarEvents);
+    gapi.client.load('calendar', 'v3', loadMetroGrid);
     gapi.client.load('plus', 'v1', initializeProfileData);
     launchClock();
 }
 
 /**
- * Get Calendar data from the Google API, sanitize
- * and display it.
+ * Get individual event data from the Google API, sanitize
+ * and display it in the form of a Metro-style grid
  */
 // TODO: Integrate other time spans
-function loadCalendarData() {
+function loadMetroGrid() {
     // Set parameters for data collection
     var timeSpan = 'month';
     var today = new Date(Date.now());
@@ -70,14 +71,11 @@ function loadCalendarData() {
         var events = response.items;
 
         if (events.length > 0) {
-            var containers = document.getElementsByClassName('upcoming');
             var metroNodes = [];
 
             for (var i = 0; i < events.length; i++) {
-                var event = events[i];
-                var array = createMetroNode(event);
+                var array = createMetroNode(events[i]);
                 metroNodes[i] = array[0];
-                if (i < 4) containers[i].innerHTML = array[1];
             }
 
             // Display Metro layout boxes
