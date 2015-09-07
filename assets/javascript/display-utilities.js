@@ -219,7 +219,7 @@ function loadSidebarEvents() {
                 if (i < 4) containers[i].querySelector('.text-wrapper').innerHTML = array[1];
             }
         }
-        $('.text-wrapper span').textfill({minFontPixels: 200, debug: true});
+        $('.text-wrapper span').textfill({minFontPixels: 200});
     });
 }
 
