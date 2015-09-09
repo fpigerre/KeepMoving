@@ -34,6 +34,14 @@ function loadElements() {
     $('#date-to').pickadate();
     $('#time-from').pickatime();
     $('#time-to').pickatime();
+
+    $('#all-day').change(function () {
+        if (this.checked) {
+            $('#times').hide();
+        } else {
+            $('#times').show();
+        }
+    });
 }
 
 /**
