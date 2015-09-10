@@ -42,6 +42,8 @@ function loadElements() {
             $('#times').show();
         }
     });
+
+    $('.submit').click(createEvent());
 }
 
 /**
