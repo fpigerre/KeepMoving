@@ -43,7 +43,8 @@ function loadElements() {
         }
     });
 
-    $('.submit').click(createEvent());
+    // TODO: Add method for getting date data from inputs
+    $('.submit').click(createEvent($('#title').val(), $('#location textarea').val()));
 }
 
 /**

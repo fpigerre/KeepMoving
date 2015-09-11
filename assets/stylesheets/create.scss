@@ -92,3 +92,17 @@ textarea {
     }
   }
 }
+
+.submit {
+  -webkit-appearance: none;
+
+  background-color: white;
+  border: none;
+  bottom: 10px;
+  color: #01E164;
+  font-family: Fira, sans-serif;
+  font-size: 20px;
+  padding: 10px;
+  position: absolute;
+  right: 25px;
+}
