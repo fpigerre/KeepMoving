@@ -44,7 +44,12 @@ function loadElements() {
     });
 
     // TODO: Add method for getting date data from inputs
-    $('.submit').click(createEvent($('#title').val(), $('#location textarea').val()));
+    $('.submit').click(function () {
+        createEvent($('#title').val(), $('#location textarea').val());
+
+        // TODO: Add flash message to indicate confirmation
+        window.location.href = 'index.html';
+    });
 }
 
 /**
