@@ -30,10 +30,10 @@ function handleAuthResult(authResult) {
 function loadElements() {
     gapi.client.load('calendar', 'v3', loadSidebarEvents);
 
-    $('#date-from').pickadate();
-    $('#date-to').pickadate();
-    $('#time-from').pickatime();
-    $('#time-to').pickatime();
+    var dateFrom = $('#date-from').pickadate();
+    var dateTo = $('#date-to').pickadate();
+    var timeFrom = $('#time-from').pickatime();
+    var timeTo = $('#time-to').pickatime();
 
     $('#all-day').change(function () {
         if (this.checked) {
@@ -43,9 +43,9 @@ function loadElements() {
         }
     });
 
-    // TODO: Add method for getting date data from inputs
     $('.submit').click(function () {
-        createEvent($('#title').val(), $('#location textarea').val());
+        // TODO: Add event times
+        createEvent($('#title').val(), $('#location textarea').val(), dateFrom.get(), dateTo.get());
 
         // TODO: Add flash message to indicate confirmation
         window.location.href = 'index.html';
