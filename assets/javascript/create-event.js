@@ -44,8 +44,9 @@ function loadElements() {
     });
 
     $('.submit').click(function () {
-        // TODO: Add event times
-        createEvent($('#title').val(), $('#location textarea').val(), dateFrom.get(), dateTo.get());
+        var from = new Date(dateFrom.year, dateFrom.month, dateFrom.date, timeFrom.hour, timeFrom.mins);
+        var to = new Date(dateTo.year, dateTo.month, dateTo.date, timeTo.hour, timeTo.mins);
+        createEvent($('#title').val(), $('#location textarea').val(), from.toISOString(), to.toISOString());
 
         // TODO: Add flash message to indicate confirmation
         window.location.href = 'index.html';
