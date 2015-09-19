@@ -39,12 +39,17 @@ h1, h3 {
 
   .left, .right {
     display: inline-block;
-    padding: 30px;
+    padding: 20px;
+  }
+
+  .left {
+    width: 55%;
   }
 
   .right {
     float: right;
     text-align: center;
+    width: 35%;
 
     #date {
       font-size: 28px;
