@@ -155,6 +155,7 @@ function createMetroNode(event) {
     }
 
     // Split long summaries into several lines
+    // Error: Length property can result in undefined error
     if (summary.length > 11) {
         summary = '';
         var array = event.summary.toString().split(' ');

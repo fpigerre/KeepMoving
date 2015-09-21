@@ -30,10 +30,14 @@ function handleAuthResult(authResult) {
 function loadElements() {
     gapi.client.load('calendar', 'v3', loadSidebarEvents);
 
-    var dateFrom = $('#date-from').pickadate();
-    var dateTo = $('#date-to').pickadate();
-    var timeFrom = $('#time-from').pickatime();
-    var timeTo = $('#time-to').pickatime();
+    var dateFrom = $('#date-from').pickadate(),
+        dateFromPicker = dateFrom.pickadate('picker');
+    var dateTo = $('#date-to').pickadate(),
+        dateToPicker = dateTo.pickadate('picker');
+    var timeFrom = $('#time-from').pickatime(),
+        timeFromPicker = timeFrom.pickatime('picker');
+    var timeTo = $('#time-to').pickatime(),
+        timeToPicker = timeTo.pickatime('picker');
 
     $('#all-day').change(function () {
         if (this.checked) {
@@ -44,9 +48,13 @@ function loadElements() {
     });
 
     $('.submit').click(function () {
-        var from = new Date(dateFrom.year, dateFrom.month, dateFrom.date, timeFrom.hour, timeFrom.mins);
-        var to = new Date(dateTo.year, dateTo.month, dateTo.date, timeTo.hour, timeTo.mins);
-        createEvent($('#title').val(), $('#location textarea').val(), from.toISOString(), to.toISOString());
+        var dateFromObject = dateFromPicker.get('select'),
+            dateToObject = dateToPicker.get('select'),
+            timeFromObject = timeFromPicker.get('select'),
+            timeToObject = timeToPicker.get('select');
+        var from = new Date(dateFromObject.year, dateFromObject.month, dateFromObject.date, timeFromObject.hour, timeFromObject.mins);
+        var to = new Date(dateToObject.year, dateToObject.month, dateToObject.date, timeToObject.hour, timeToObject.mins);
+        createEvent($('#title').val(), $('#location textarea').val(), from, to);
 
         // TODO: Add flash message to indicate confirmation
         window.location.href = 'index.html';
